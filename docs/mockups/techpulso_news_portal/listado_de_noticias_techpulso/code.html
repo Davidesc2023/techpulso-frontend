@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary": "#004ac6",
+          "on-tertiary-fixed": "#002113",
+          "secondary-fixed": "#acedff",
+          "primary-fixed": "#dbe1ff",
+          "outline-variant": "#c3c6d7",
+          "on-primary-fixed": "#00174b",
+          "on-secondary-fixed": "#001f26",
+          "surface-container-highest": "#dae2fd",
+          "on-error": "#ffffff",
+          "inverse-primary": "#b4c5ff",
+          "inverse-on-surface": "#eef0ff",
+          "on-secondary": "#ffffff",
+          "surface-container-low": "#f2f3ff",
+          "surface-bright": "#faf8ff",
+          "background": "#faf8ff",
+          "surface-container": "#eaedff",
+          "error-container": "#ffdad6",
+          "error": "#ba1a1a",
+          "surface-dim": "#d2d9f4",
+          "secondary-fixed-dim": "#4cd7f6",
+          "surface-container-high": "#e2e7ff",
+          "surface-tint": "#0053db",
+          "on-tertiary": "#ffffff",
+          "tertiary-fixed": "#6ffbbe",
+          "on-surface": "#131b2e",
+          "on-primary": "#ffffff",
+          "surface-container-lowest": "#ffffff",
+          "tertiary-fixed-dim": "#4edea3",
+          "on-primary-fixed-variant": "#003ea8",
+          "surface": "#faf8ff",
+          "primary-container": "#2563eb",
+          "inverse-surface": "#283044",
+          "on-tertiary-fixed-variant": "#005236",
+          "outline": "#737686",
+          "tertiary": "#006242",
+          "on-primary-container": "#eeefff",
+          "on-background": "#131b2e",
+          "on-error-container": "#93000a",
+          "on-tertiary-container": "#bdffdb",
+          "on-surface-variant": "#434655",
+          "secondary-container": "#57dffe",
+          "on-secondary-container": "#006172",
+          "surface-variant": "#dae2fd",
+          "tertiary-container": "#007d55",
+          "on-secondary-fixed-variant": "#004e5c",
+          "secondary": "#00687a",
+          "primary-fixed-dim": "#b4c5ff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "gutter-sm": "1rem",
+          "gutter": "1.5rem",
+          "space-sm": "0.5rem",
+          "gutter-lg": "2rem",
+          "margin": "1.5rem",
+          "margin-sm": "1rem",
+          "space-xs": "0.25rem",
+          "space-xl": "2.5rem",
+          "space-md": "1rem",
+          "space-lg": "1.5rem",
+          "margin-lg": "3rem"
+        },
+        "fontFamily": {
+          "caption": [
+            "Plus Jakarta Sans"
+          ],
+          "body-lead": [
+            "Plus Jakarta Sans"
+          ],
+          "label-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "display-hero-mobile": [
+            "Plus Jakarta Sans"
+          ],
+          "body-base": [
+            "Plus Jakarta Sans"
+          ],
+          "body-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "display-hero": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-xl-mobile": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-xl": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-md": [
+            "Plus Jakarta Sans"
+          ],
+          "label-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-sm": [
+            "Plus Jakarta Sans"
+          ]
+        },
+        "fontSize": {
+          "caption": [
+            "0.75rem",
+            {
+              "lineHeight": "1.4",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lead": [
+            "1.125rem",
+            {
+              "lineHeight": "1.65",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "0.875rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "2rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "display-hero-mobile": [
+            "2.25rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "800"
+            }
+          ],
+          "body-base": [
+            "1rem",
+            {
+              "lineHeight": "1.6",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "0.875rem",
+            {
+              "lineHeight": "1.5",
+              "letterSpacing": "0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-hero": [
+            "3.5rem",
+            {
+              "lineHeight": "1.1",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "800"
+            }
+          ],
+          "headline-xl-mobile": [
+            "1.75rem",
+            {
+              "lineHeight": "1.25",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-xl": [
+            "2.5rem",
+            {
+              "lineHeight": "1.15",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-md": [
+            "1.5rem",
+            {
+              "lineHeight": "1.3",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "0.75rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "1.25rem",
+            {
+              "lineHeight": "1.35",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-base text-body-base text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1320px] mx-auto px-margin lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm focus:outline-none" data-path="inicio" href="#"><img alt="TechPulso Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UtzdpvEEvZvFPWMbpzShTkE3ba-mpAzrkI4Ey7cVbh-MhniVPeuR-kpSy5w_5Nb0YT0kUvxGmJ2GiDwfgfkK8sT5ZrZ3ELn2_ayH-G7LZbG5K2Cs5-J9SQWeitGYluE5dhtSOdOV9wi5K3GAAMlfmS1SGm5TNz-WmiEuJuhE6dToD33djfYtDxlSCfFLG-fcjD8iKL-TZQoHF_znwA6tOajJwIgizh0Md_E-u7Omdc_HeXviT7AoAoo9q1"/><span class="font-headline-md text-headline-md text-primary tracking-tight font-bold">TechPulso</span></a></div><nav class="hidden lg:flex items-center gap-gutter" data-active-classes="text-primary font-bold border-b-2 border-primary pb-1"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="inicio" href="#">Inicio</a><a aria-current="page" class="transition-colors text-primary font-bold border-b-2 border-primary pb-1" data-path="noticias" href="#">Noticias</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="favoritos" href="#">Favoritos</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="categorias" href="#">Categorías</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="contacto" href="#">Contacto</a></nav><div class="flex items-center gap-space-md"><div class="relative hidden xl:block"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="bg-surface-container-lowest border border-outline-variant/50 rounded-full pl-9 pr-8 py-1.5 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary w-56 transition-all" placeholder="Buscar tecnología, temas..." type="text"/><span class="absolute right-3 top-1/2 -translate-y-1/2 font-caption text-caption text-outline">⌘K</span></div><a class="relative flex items-center justify-center p-2 rounded-full hover:bg-surface-container hover:text-on-surface text-on-surface-variant transition-colors" data-path="favoritos" href="#" title="Mis Favoritos"><span class="material-symbols-outlined text-[22px]">bookmark</span><span class="absolute -top-1 -right-1 bg-primary text-on-primary font-label-sm text-label-sm w-5 h-5 rounded-full flex items-center justify-center ring-2 ring-surface-container-lowest font-bold">3</span></a><a class="inline-flex items-center gap-space-xs bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.35)] active:scale-95" data-path="publicar-noticia" href="#"><span class="material-symbols-outlined text-[20px]">add</span><span>Publicar Noticia</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full">
+<section class="relative w-full overflow-hidden bg-surface-container-low py-space-xl">
+<div class="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
+<div class="absolute left-1/3 bottom-0 h-64 w-64 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+<div class="max-w-[1320px] mx-auto px-margin lg:px-margin-lg relative z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="space-y-space-xs max-w-2xl">
+<div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span>Feed Global Verificado</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Catálogo de Noticias</h1>
+<p class="font-body-lead text-body-lead text-on-surface-variant">
+            Explora análisis rigurosos, lanzamientos emergentes y avances tecnológicos contextualizados.
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-surface-container-highest text-primary font-label-sm text-label-sm ml-1">
+              Mostrando 18 noticias verificadas
+            </span>
+</p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs md:pt-0">
+<button class="inline-flex items-center gap-space-xs bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-5 py-3 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer" id="open-create-modal" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>+ Agregar Noticia</span>
+</button>
+</div>
+</div>
+<div class="mt-space-lg p-space-md bg-surface-container-lowest rounded-xl shadow-sm space-y-space-md">
+<div class="flex flex-col lg:flex-row gap-space-md items-center justify-between">
+<div class="relative w-full lg:max-w-xl">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[22px]">search</span>
+<input class="w-full pl-11 pr-4 py-2.5 bg-surface-container-low rounded-lg font-body-base text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-colors shadow-inner" id="search-input" placeholder="Buscar por palabras clave, autor o temas..." type="text"/>
+</div>
+<div class="flex items-center gap-space-sm w-full lg:w-auto justify-between lg:justify-end">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span class="hidden sm:inline">Ordenar por:</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-label-md text-label-md py-2.5 pl-3.5 pr-10 rounded-lg focus:outline-none cursor-pointer" id="sort-select">
+<option value="recent">Más recientes</option>
+<option value="views">Más leídas</option>
+<option value="relevance">Por relevancia</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 pt-1 no-scrollbar">
+<button class="filter-pill active-pill px-4 py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary transition-all whitespace-nowrap shadow-sm" data-category="all" type="button">
+            Todas <span class="ml-1 opacity-80 font-caption text-caption">(18)</span>
+</button>
+<button class="filter-pill px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all whitespace-nowrap" data-category="tecnologia" type="button">
+            Tecnología <span class="ml-1 opacity-70 font-caption text-caption">(8)</span>
+</button>
+<button class="filter-pill px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all whitespace-nowrap" data-category="educativas" type="button">
+            Educativas <span class="ml-1 opacity-70 font-caption text-caption">(4)</span>
+</button>
+<button class="filter-pill px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all whitespace-nowrap" data-category="turisticas" type="button">
+            Turísticas <span class="ml-1 opacity-70 font-caption text-caption">(3)</span>
+</button>
+<button class="filter-pill px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all whitespace-nowrap" data-category="comerciales" type="button">
+            Comerciales <span class="ml-1 opacity-70 font-caption text-caption">(3)</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<main class="w-full py-space-xl">
+<div class="max-w-[1320px] mx-auto px-margin lg:px-margin-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter-lg" id="articles-grid">
+<article class="article-card flex flex-col bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" data-category="tecnologia">
+<div class="relative w-full h-52 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Microchips neurales avanzados con trazas de circuitos luminiscentes en tonos azul neón profundo y cian eléctrico, macrofotografía de ingeniería electrónica sobre oblea de silicio de última generación en entorno de laboratorio limpio e hipermoderno." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUBeD_GdXY_6vkbocR18a8aS472RaVbiKuLwYF-rxzQVKK86XlcAD5TMJQnUsBtjQjcVbiT-cm5EIf7F_IQ9z7qostYu7oag-oRgMuKyWNwm9KxzLCLXETDp_a405Ob7S0TXFrMZPshM4CgUPdjGoTAKHkS8aug7Ya8B1b6fK6fNpVqS5O1GzYINqwp3s-9KgeNqSURSGrSfFjhMgrU41mnWVGKtfVEaUguWPuJqhCGW638PAEekMWLQ"/>
+<div class="absolute top-3 left-3 bg-primary/90 backdrop-blur-sm text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold tracking-wide">
+              Tecnología
+            </div>
+<button class="fav-toggle absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm" title="Guardar en favoritos" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="flex-1 p-space-md flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-outline font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Hace 2 horas</span>
+<span>•</span>
+<span>Lectura: 4 min</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold line-clamp-2 hover:text-primary transition-colors cursor-pointer">
+                Arquitecturas RISC-V conquistan los nuevos centros de datos
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+                La transición masiva hacia arquitecturas de cómputo abiertas reduce dependencias propietarias y catapulta la eficiencia energética en hyperscalers globales.
+              </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-label-sm text-label-sm font-bold">
+                  VR
+                </div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Valeria Ríos</span>
+</div>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>Ver más</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<article class="article-card flex flex-col bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" data-category="educativas">
+<div class="relative w-full h-52 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Estudiantes universitarios interactuando con visores de realidad virtual elegantes e interactivos, manipulando proyecciones holográficas tridimensionales de bioingeniería celular en un aula universitaria futurista e iluminada con luz natural." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGVGYgXx4Agsj87UDnO0xlCZGac3GSV-DWbZd6MHAPHt8wfsKnU6yuphaHSs1zZnMapAJAaoA8HS4kujbjNSK5xOxvRs1FInt41pLssfJWrNil-NmadZrtwTC53e36QDgx8X4Iex15PacaHk42LwCyr9lMjPWjJJXJ4AMSIHK1aFkLS3-nFBZCh9TkBOQcKkdCY5O3Xf4l5oCFoSvP75GqFfWutTiG5Ec0v9PBeBbBusJCJU7iQkW9FQ"/>
+<div class="absolute top-3 left-3 bg-secondary/90 backdrop-blur-sm text-on-secondary px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold tracking-wide">
+              Educativas
+            </div>
+<button class="fav-toggle absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm" title="Guardar en favoritos" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="flex-1 p-space-md flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-outline font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Hace 5 horas</span>
+<span>•</span>
+<span>Lectura: 6 min</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold line-clamp-2 hover:text-primary transition-colors cursor-pointer">
+                Simuladores de laboratorios en VR para universidades públicas
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+                Nuevos consorcios académicos despliegan infraestructura inmersiva que democratiza la práctica experimental de química cuántica y física de partículas.
+              </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-label-sm text-label-sm font-bold">
+                  MC
+                </div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Martín Castro</span>
+</div>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>Ver más</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<article class="article-card flex flex-col bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" data-category="turisticas">
+<div class="relative w-full h-52 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Terminal aérea ultramoderna con ventanales hacia pistas de despegue y cielo crepuscular azul cobalto, pantallas con vectores orbitales holográficos y rutas satelitales cuánticas representadas con luminarias precisas de estilo aeroespacial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhJvjrxluvl6jnCMwy0C2UpGvOyZlpE-fs1ZEIQJh7J6n1kr2qr7-ArRzNRIgRaId5QvxsgyXpO-nbvKFsidUA7a8lS9yj-YHOv-0p3_LOKlJ57xgw9LB13m2N9ImMgEoi40VRPvMESGqgnis8ahjsxuxSnJQetL2-aP-k4wVagVhsEYQLvkMbhHQ9ZPiII56_aT8RfdcP2OG-NrLpIcvNxMA_YjfyypaSZKaOe9NOB0bZOsrP9LsJpg"/>
+<div class="absolute top-3 left-3 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold tracking-wide">
+              Turísticas
+            </div>
+<button class="fav-toggle absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm" title="Guardar en favoritos" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="flex-1 p-space-md flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-outline font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Ayer</span>
+<span>•</span>
+<span>Lectura: 5 min</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold line-clamp-2 hover:text-primary transition-colors cursor-pointer">
+                Sistemas de navegación cuántica en aviación comercial
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+                Aerolíneas intercontinentales prueban brújulas atómicas inmunes a interferencias de GPS, marcando una era de vuelos transoceánicos sin margen de desvío.
+              </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-label-sm text-label-sm font-bold">
+                  EL
+                </div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Elena Lora</span>
+</div>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>Ver más</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<article class="article-card flex flex-col bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" data-category="comerciales">
+<div class="relative w-full h-52 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Visualización abstracta de transacciones financieras descentralizadas interconectadas por haces de luz geométrica y nodos de bloques criptográficos en gradientes azul cobalto, plata y cian pulido en perspectiva isométrica." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAdqEx98K8JSUUzq13mgUuvup74SouEa6_6oQfO1zcxZ4KbI2RtGe38_Ve-_0L8_daJuUhJ2AO0pfm6GraCF0u1-8p8bWMQp6nEusbMoM4oxXbKUEJXdS76P6YD-e8TBOjvHxy7VP4Z8QV5YNLv4z6cnnHps8zeh348JzKNx80Sb_PhKqvHkqHiE1HlQzbBphdWjhfYRBPW0oODKL7TTKcgAXuZzvdyV-YoOt5U05ryDBh3zeXx3BARA"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold tracking-wide">
+              Comerciales
+            </div>
+<button class="fav-toggle absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm" title="Guardar en favoritos" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="flex-1 p-space-md flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-outline font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Hace 1 día</span>
+<span>•</span>
+<span>Lectura: 3 min</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold line-clamp-2 hover:text-primary transition-colors cursor-pointer">
+                Plataformas B2B integran liquidaciones instantáneas vía blockchain
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+                Cadenas logísticas transfronterizas eliminan intermediarios fiduciarios adoptando contratos inteligentes con garantía instantánea en segundos.
+              </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-label-sm text-label-sm font-bold">
+                  DF
+                </div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Diego Fuentes</span>
+</div>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>Ver más</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<article class="article-card flex flex-col bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" data-category="tecnologia">
+<div class="relative w-full h-52 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Brazo robótico de manufactura aeroespacial equipado con sensores táctiles de silicona biomimética examinando minuciosamente una estructura de aleación ligera, iluminación técnica direccional en sala de ensamblaje inteligente de alta precisión." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz3HJXS9be6hpN9iBUlc21mKjYHs_9BwGLbfmXCSeGh5ktaqjW0zofq-kRmPHXG57W0CkSKMN_a6pyRqfFWlsi55VV53AG1kBCTnZvLWTv8MgrveJjEcT0_v8gkBZkMRNCWwFl4ZyKy4y6ye4mlzLFB0mqycnRzh8P8xDQkjCmfNHDK669XoAMkapvv_nldkLKErCkn21t8J69H6cCcEXLTJyPI7g8ujEJSP79i802UOTFpZDxyjdsnw"/>
+<div class="absolute top-3 left-3 bg-primary/90 backdrop-blur-sm text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold tracking-wide">
+              Tecnología
+            </div>
+<button class="fav-toggle absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm" title="Guardar en favoritos" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="flex-1 p-space-md flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-outline font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Hace 2 días</span>
+<span>•</span>
+<span>Lectura: 7 min</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold line-clamp-2 hover:text-primary transition-colors cursor-pointer">
+                Sensores hápticos de última generación para robótica colaborativa
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+                La microelectrónica de piel artificial concede a manipuladores autónomos una sensibilidad táctil idéntica a la humana en entornos industriales críticos.
+              </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-label-sm text-label-sm font-bold">
+                  SK
+                </div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Sonia Klein</span>
+</div>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>Ver más</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<article class="article-card flex flex-col bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" data-category="educativas">
+<div class="relative w-full h-52 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" data-alt="Entorno de programación con terminales de código oscuro y dashboards analíticos de seguridad cibernética en pantallas múltiples, iluminado sutilmente con acentos luminosos cian y azul cobalto en estudio de desarrollo de software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsa_bRJVaqXt9W6vc0LYfNUcOB5aFn102Ar0n1rtg9ApSRkcgguoqq9VvG81aY56IhmYCrVgucKUR9pAgNhL2w4ffkmfb-0FZ3-rY8E-qKtR0WbpiIADxwKHCQzUrwmgoBjv5TbnOWbbGJ77Cz47QeoIUv9W6LyQekBps99KHZ3fjVfRPN9DZ4unZlLwOASAyGtT-WkskXJi_tT6YbVkX0lRvdleYh1s1YJ_dG9ixpLs644cjPHUZYmw"/>
+<div class="absolute top-3 left-3 bg-secondary/90 backdrop-blur-sm text-on-secondary px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold tracking-wide">
+              Educativas
+            </div>
+<button class="fav-toggle absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm" title="Guardar en favoritos" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="flex-1 p-space-md flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-outline font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Hace 3 días</span>
+<span>•</span>
+<span>Lectura: 4 min</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold line-clamp-2 hover:text-primary transition-colors cursor-pointer">
+                Bootcamps de ciberseguridad con entornos sandbox automatizados
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+                Plataformas de entrenamiento inyectan escenarios reales de ataque en vivo, acelerando la titulación práctica de analistas defensivos de redes.
+              </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-label-sm text-label-sm font-bold">
+                  RN
+                </div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Rafael Navarro</span>
+</div>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>Ver más</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+<div class="mt-space-xl flex flex-col sm:flex-row items-center justify-between gap-space-md bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+          Página <span class="font-semibold text-on-surface">1</span> de <span class="font-semibold text-on-surface">3</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low text-outline cursor-not-allowed font-label-md text-label-md flex items-center gap-1 opacity-60" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+<span class="hidden sm:inline">Anterior</span>
+</button>
+<button class="w-9 h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center shadow-sm" type="button">
+            1
+          </button>
+<button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-colors" type="button">
+            2
+          </button>
+<button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-colors" type="button">
+            3
+          </button>
+<span class="px-1 text-outline font-body-sm text-body-sm">...</span>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center gap-1 transition-colors" type="button">
+<span class="hidden sm:inline">Siguiente</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-space-md" id="crud-modal-backdrop">
+<div class="bg-surface-container-lowest w-full max-w-xl rounded-xl shadow-2xl p-space-lg transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto" id="crud-modal-panel">
+<div class="flex items-center justify-between pb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">post_add</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Publicar Nueva Noticia</h2>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors cursor-pointer" id="close-create-modal" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="space-y-space-md" id="create-article-form">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="news-title">
+            Título de la Noticia *
+          </label>
+<input class="w-full px-3.5 py-2 bg-surface-container-low rounded-lg font-body-base text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-colors" id="news-title" placeholder="ej. Nuevos avances en computación cuántica fotónica" required="" type="text"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="news-category">
+              Categoría *
+            </label>
+<select class="w-full px-3.5 py-2 bg-surface-container-low rounded-lg font-label-md text-label-md text-on-surface focus:outline-none focus:bg-surface-container-lowest transition-colors" id="news-category" required="">
+<option value="tecnologia">Tecnología</option>
+<option value="educativas">Educativas</option>
+<option value="turisticas">Turísticas</option>
+<option value="comerciales">Comerciales</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="news-image">
+              URL de Imagen Destacada
+            </label>
+<input class="w-full px-3.5 py-2 bg-surface-container-low rounded-lg font-body-base text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-colors" id="news-image" placeholder="https://images.unsplash.com/..." type="url"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="news-summary">
+            Resumen Editorial (1-2 párrafos) *
+          </label>
+<textarea class="w-full px-3.5 py-2 bg-surface-container-low rounded-lg font-body-base text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-colors resize-none" id="news-summary" placeholder="Describe sucintamente los aspectos técnicos y el impacto del evento..." required="" rows="3"></textarea>
+</div>
+<div class="pt-space-xs flex items-center justify-end gap-space-sm">
+<button class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors cursor-pointer" id="cancel-modal" type="button">
+            Cancelar
+          </button>
+<button class="inline-flex items-center gap-space-xs bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-5 py-2 rounded-lg transition-all shadow-md active:scale-95 cursor-pointer" type="submit">
+<span class="material-symbols-outlined text-[18px]">publish</span>
+<span>Publicar Noticia</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<div class="fixed bottom-6 right-6 z-50 bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-lg shadow-xl flex items-center gap-space-sm transform translate-y-20 opacity-0 transition-all duration-300" id="toast-notification">
+<span class="material-symbols-outlined text-tertiary-fixed text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm" id="toast-message">Acción completada exitosamente</span>
+</div>
+<script>
+    (function() {
+      const openModalBtn = document.getElementById('open-create-modal');
+      const closeModalBtn = document.getElementById('close-create-modal');
+      const cancelModalBtn = document.getElementById('cancel-modal');
+      const modalBackdrop = document.getElementById('crud-modal-backdrop');
+      const modalPanel = document.getElementById('crud-modal-panel');
+      const createForm = document.getElementById('create-article-form');
+      const filterPills = document.querySelectorAll('.filter-pill');
+      const articleCards = document.querySelectorAll('.article-card');
+      const searchInput = document.getElementById('search-input');
+      const toast = document.getElementById('toast-notification');
+      const toastMessage = document.getElementById('toast-message');
+
+      function showToast(msg) {
+        toastMessage.textContent = msg;
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-20', 'opacity-0');
+        }, 3000);
+      }
+
+      function openModal() {
+        modalBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+        modalBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+        modalPanel.classList.remove('scale-95');
+        modalPanel.classList.add('scale-100');
+      }
+
+      function closeModal() {
+        modalBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+        modalBackdrop.classList.add('opacity-0', 'pointer-events-none');
+        modalPanel.classList.remove('scale-100');
+        modalPanel.classList.add('scale-95');
+      }
+
+      openModalBtn?.addEventListener('click', openModal);
+      closeModalBtn?.addEventListener('click', closeModal);
+      cancelModalBtn?.addEventListener('click', closeModal);
+      modalBackdrop?.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) closeModal();
+      });
+
+      createForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        closeModal();
+        createForm.reset();
+        showToast('Noticia agregada con éxito a revisión');
+      });
+
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          filterPills.forEach(p => {
+            p.classList.remove('active-pill', 'bg-primary', 'text-on-primary', 'shadow-sm');
+            p.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+          });
+          pill.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+          pill.classList.add('active-pill', 'bg-primary', 'text-on-primary', 'shadow-sm');
+
+          const category = pill.getAttribute('data-category');
+          articleCards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      searchInput?.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        articleCards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          if (text.includes(query)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+
+      document.querySelectorAll('.fav-toggle').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const icon = btn.querySelector('.material-symbols-outlined');
+          const isFilled = btn.dataset.favorited === 'true';
+          if (isFilled) {
+            btn.dataset.favorited = 'false';
+            btn.classList.remove('text-error');
+            btn.classList.add('text-on-surface-variant');
+            icon.style.fontVariationSettings = "'FILL' 0";
+            showToast('Eliminado de Favoritos');
+          } else {
+            btn.dataset.favorited = 'true';
+            btn.classList.remove('text-on-surface-variant');
+            btn.classList.add('text-error');
+            icon.style.fontVariationSettings = "'FILL' 1";
+            showToast('Guardado en Favoritos');
+          }
+        });
+      });
+    })();
+  </script>
+</div></main><footer class="w-full bg-inverse-surface text-inverse-on-surface"><div class="max-w-[1320px] mx-auto px-margin lg:px-margin-lg pt-margin-lg pb-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-lg"><div class="space-y-space-md"><div class="flex items-center gap-space-sm"><img alt="TechPulso Logo" class="h-7 w-auto object-contain brightness-0 invert" src="https://lh3.googleusercontent.com/aida/AEtjO1UtzdpvEEvZvFPWMbpzShTkE3ba-mpAzrkI4Ey7cVbh-MhniVPeuR-kpSy5w_5Nb0YT0kUvxGmJ2GiDwfgfkK8sT5ZrZ3ELn2_ayH-G7LZbG5K2Cs5-J9SQWeitGYluE5dhtSOdOV9wi5K3GAAMlfmS1SGm5TNz-WmiEuJuhE6dToD33djfYtDxlSCfFLG-fcjD8iKL-TZQoHF_znwA6tOajJwIgizh0Md_E-u7Omdc_HeXviT7AoAoo9q1"/><span class="font-headline-sm text-headline-sm text-surface-container-lowest tracking-tight font-bold">TechPulso</span></div><p class="font-body-sm text-body-sm text-outline-variant leading-relaxed">El pulso diario de la innovación tecnológica, inteligencia artificial y tendencias globales.</p><div class="flex items-center gap-space-sm pt-space-xs"><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">share</span></a><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">public</span></a><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">terminal</span></a><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">smart_display</span></a></div></div><div class="space-y-space-md"><h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Enlaces Rápidos</h4><ul class="space-y-space-sm font-body-sm text-body-sm"><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="inicio" href="#">Inicio</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Catálogo de Noticias</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="favoritos" href="#">Favoritos</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="sobre-nosotros" href="#">Sobre Nosotros</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="prensa" href="#">Prensa</a></li></ul></div><div class="space-y-space-md"><h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Categorías Populares</h4><ul class="space-y-space-sm font-body-sm text-body-sm"><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Tecnología</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Educativas</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Turísticas</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Comerciales</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Ciberseguridad</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Inteligencia Artificial</a></li></ul></div><div class="space-y-space-md"><h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Contacto y Newsletter</h4><p class="font-body-sm text-body-sm text-outline-variant">Suscríbete al resumen tech semanal</p><div class="flex items-center"><input class="w-full bg-surface-variant/10 border border-outline-variant/30 rounded-l-lg px-3 py-2 font-body-sm text-body-sm text-surface-container-lowest placeholder:text-outline focus:outline-none focus:border-secondary-container" placeholder="tu@email.com" type="email"/><button class="bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container px-4 py-2 rounded-r-lg font-label-md text-label-md transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[18px]">send</span></button></div><div class="space-y-space-xs pt-space-xs font-body-sm text-body-sm text-outline-variant"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px]">mail</span><span>contacto@techpulso.com</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px]">location_on</span><span>Silicon Valley / Madrid</span></div></div></div></div><div class="mt-margin-lg pt-space-md border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-between gap-space-md text-outline-variant font-caption text-caption"><p>© 2025 TechPulso Inc. Todos los derechos reservados.</p><div class="flex items-center gap-gutter"><span>Privacidad</span><span>Términos del Servicio</span><span>Cookies</span></div></div></div></footer></body></html>

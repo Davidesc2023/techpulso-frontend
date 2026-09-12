@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary": "#004ac6",
+          "on-tertiary-fixed": "#002113",
+          "secondary-fixed": "#acedff",
+          "primary-fixed": "#dbe1ff",
+          "outline-variant": "#c3c6d7",
+          "on-primary-fixed": "#00174b",
+          "on-secondary-fixed": "#001f26",
+          "surface-container-highest": "#dae2fd",
+          "on-error": "#ffffff",
+          "inverse-primary": "#b4c5ff",
+          "inverse-on-surface": "#eef0ff",
+          "on-secondary": "#ffffff",
+          "surface-container-low": "#f2f3ff",
+          "surface-bright": "#faf8ff",
+          "background": "#faf8ff",
+          "surface-container": "#eaedff",
+          "error-container": "#ffdad6",
+          "error": "#ba1a1a",
+          "surface-dim": "#d2d9f4",
+          "secondary-fixed-dim": "#4cd7f6",
+          "surface-container-high": "#e2e7ff",
+          "surface-tint": "#0053db",
+          "on-tertiary": "#ffffff",
+          "tertiary-fixed": "#6ffbbe",
+          "on-surface": "#131b2e",
+          "on-primary": "#ffffff",
+          "surface-container-lowest": "#ffffff",
+          "tertiary-fixed-dim": "#4edea3",
+          "on-primary-fixed-variant": "#003ea8",
+          "surface": "#faf8ff",
+          "primary-container": "#2563eb",
+          "inverse-surface": "#283044",
+          "on-tertiary-fixed-variant": "#005236",
+          "outline": "#737686",
+          "tertiary": "#006242",
+          "on-primary-container": "#eeefff",
+          "on-background": "#131b2e",
+          "on-error-container": "#93000a",
+          "on-tertiary-container": "#bdffdb",
+          "on-surface-variant": "#434655",
+          "secondary-container": "#57dffe",
+          "on-secondary-container": "#006172",
+          "surface-variant": "#dae2fd",
+          "tertiary-container": "#007d55",
+          "on-secondary-fixed-variant": "#004e5c",
+          "secondary": "#00687a",
+          "primary-fixed-dim": "#b4c5ff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "gutter-sm": "1rem",
+          "gutter": "1.5rem",
+          "space-sm": "0.5rem",
+          "gutter-lg": "2rem",
+          "margin": "1.5rem",
+          "margin-sm": "1rem",
+          "space-xs": "0.25rem",
+          "space-xl": "2.5rem",
+          "space-md": "1rem",
+          "space-lg": "1.5rem",
+          "margin-lg": "3rem"
+        },
+        "fontFamily": {
+          "caption": [
+            "Plus Jakarta Sans"
+          ],
+          "body-lead": [
+            "Plus Jakarta Sans"
+          ],
+          "label-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "display-hero-mobile": [
+            "Plus Jakarta Sans"
+          ],
+          "body-base": [
+            "Plus Jakarta Sans"
+          ],
+          "body-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "display-hero": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-xl-mobile": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-xl": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-md": [
+            "Plus Jakarta Sans"
+          ],
+          "label-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-sm": [
+            "Plus Jakarta Sans"
+          ]
+        },
+        "fontSize": {
+          "caption": [
+            "0.75rem",
+            {
+              "lineHeight": "1.4",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lead": [
+            "1.125rem",
+            {
+              "lineHeight": "1.65",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "0.875rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "2rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "display-hero-mobile": [
+            "2.25rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "800"
+            }
+          ],
+          "body-base": [
+            "1rem",
+            {
+              "lineHeight": "1.6",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "0.875rem",
+            {
+              "lineHeight": "1.5",
+              "letterSpacing": "0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-hero": [
+            "3.5rem",
+            {
+              "lineHeight": "1.1",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "800"
+            }
+          ],
+          "headline-xl-mobile": [
+            "1.75rem",
+            {
+              "lineHeight": "1.25",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-xl": [
+            "2.5rem",
+            {
+              "lineHeight": "1.15",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-md": [
+            "1.5rem",
+            {
+              "lineHeight": "1.3",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "0.75rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "1.25rem",
+            {
+              "lineHeight": "1.35",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-base text-body-base text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1320px] mx-auto px-margin lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm focus:outline-none" data-path="inicio" href="#"><img alt="TechPulso Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UtzdpvEEvZvFPWMbpzShTkE3ba-mpAzrkI4Ey7cVbh-MhniVPeuR-kpSy5w_5Nb0YT0kUvxGmJ2GiDwfgfkK8sT5ZrZ3ELn2_ayH-G7LZbG5K2Cs5-J9SQWeitGYluE5dhtSOdOV9wi5K3GAAMlfmS1SGm5TNz-WmiEuJuhE6dToD33djfYtDxlSCfFLG-fcjD8iKL-TZQoHF_znwA6tOajJwIgizh0Md_E-u7Omdc_HeXviT7AoAoo9q1"/><span class="font-headline-md text-headline-md text-primary tracking-tight font-bold">TechPulso</span></a></div><nav class="hidden lg:flex items-center gap-gutter" data-active-classes="text-primary font-bold border-b-2 border-primary pb-1"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="inicio" href="#">Inicio</a><a aria-current="page" class="transition-colors text-primary font-bold border-b-2 border-primary pb-1" data-path="noticias" href="#">Noticias</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="favoritos" href="#">Favoritos</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="categorias" href="#">Categorías</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="contacto" href="#">Contacto</a></nav><div class="flex items-center gap-space-md"><div class="relative hidden xl:block"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="bg-surface-container-lowest border border-outline-variant/50 rounded-full pl-9 pr-8 py-1.5 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary w-56 transition-all" placeholder="Buscar tecnología, temas..." type="text"/><span class="absolute right-3 top-1/2 -translate-y-1/2 font-caption text-caption text-outline">⌘K</span></div><a class="relative flex items-center justify-center p-2 rounded-full hover:bg-surface-container hover:text-on-surface text-on-surface-variant transition-colors" data-path="favoritos" href="#" title="Mis Favoritos"><span class="material-symbols-outlined text-[22px]">bookmark</span><span class="absolute -top-1 -right-1 bg-primary text-on-primary font-label-sm text-label-sm w-5 h-5 rounded-full flex items-center justify-center ring-2 ring-surface-container-lowest font-bold">3</span></a><a class="inline-flex items-center gap-space-xs bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.35)] active:scale-95" data-path="publicar-noticia" href="#"><span class="material-symbols-outlined text-[20px]">add</span><span>Publicar Noticia</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive Article Progress Tracker -->
+<div class="fixed top-20 left-0 h-1 bg-primary-container z-40 transition-all duration-150 w-0" id="read-progress"></div>
+<!-- Delete Modal Overlay (Mini CRUD) -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm hidden items-center justify-center p-gutter" id="delete-modal">
+<div class="bg-surface-container-lowest rounded-xl max-w-md w-full p-space-lg shadow-2xl space-y-space-md animate-in fade-in zoom-in-95 duration-200">
+<div class="w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">warning</span>
+</div>
+<div class="space-y-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">¿Eliminar esta publicación?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Esta acción eliminará el artículo "Modelos de Razonamiento Híbridos" de la base editorial de TechPulso. No podrás recuperar este contenido.</p>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors" id="cancel-delete-btn" type="button">
+          Cancelar
+        </button>
+<button class="px-4 py-2 rounded-lg font-label-md text-label-md bg-error text-on-error hover:bg-on-error-container transition-colors shadow-md" id="confirm-delete-btn" type="button">
+          Sí, eliminar publicación
+        </button>
+</div>
+</div>
+</div>
+<!-- Contact Modal -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm hidden items-center justify-center p-gutter" id="contact-modal">
+<div class="bg-surface-container-lowest rounded-xl max-w-lg w-full p-space-lg shadow-2xl space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">alternate_email</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Contactar a la Redacción</h3>
+<p class="font-caption text-caption text-on-surface-variant">Destinatario: Dra. Elena Ramos &amp; TechPulso Editorial</p>
+</div>
+</div>
+<button class="text-outline hover:text-on-surface p-1 rounded-lg" id="close-contact-modal">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="space-y-space-sm" id="contact-form">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Tu Nombre Completo</label>
+<input class="w-full bg-surface-container-low rounded-lg px-3 py-2 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Ej. Dr. Mario Vargas" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Correo Institucional / Personal</label>
+<input class="w-full bg-surface-container-low rounded-lg px-3 py-2 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="correo@instituto.org" required="" type="email"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Mensaje o Consulta Técnica</label>
+<textarea class="w-full bg-surface-container-low rounded-lg px-3 py-2 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Escribe tu consulta sobre benchmarks, cooperación o réplicas de datos..." required="" rows="4"></textarea>
+</div>
+<div class="flex justify-end gap-space-sm pt-space-xs">
+<button class="px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container" id="dismiss-contact" type="button">Cerrar</button>
+<button class="px-5 py-2 rounded-lg font-label-md text-label-md bg-primary text-on-primary hover:bg-primary-container shadow-md flex items-center gap-space-xs" type="submit">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Enviar Mensaje</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Toast Notification Feedback -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-space-sm bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-lg shadow-xl font-label-md text-label-md" id="toast">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed" id="toast-icon">check_circle</span>
+<span id="toast-message">Notificación</span>
+</div>
+<!-- Article Master Container -->
+<div class="max-w-[1320px] mx-auto w-full px-margin lg:px-margin-lg py-space-lg">
+<!-- 1. Breadcrumb Navigation -->
+<nav aria-label="Ruta de navegación" class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant py-space-xs overflow-x-auto whitespace-nowrap">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">home</span>
+<span>Inicio</span>
+</a>
+<span class="text-outline-variant">/</span>
+<a class="hover:text-primary transition-colors" href="#">Noticias</a>
+<span class="text-outline-variant">/</span>
+<a class="hover:text-primary transition-colors font-medium" href="#">Tecnología</a>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-semibold truncate max-w-[280px] sm:max-w-none">Modelos de Razonamiento Híbridos</span>
+</nav>
+<!-- 2. Editorial Header -->
+<header class="mt-space-md mb-space-lg space-y-space-md">
+<!-- Category Badge & Status -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="inline-flex items-center px-3 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container/25 text-on-secondary-container font-bold tracking-wider uppercase">
+          Tecnología
+        </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-label-sm bg-tertiary-fixed/30 text-tertiary font-semibold">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+          Investigación Profunda
+        </span>
+</div>
+<!-- Main Headline -->
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight max-w-5xl">
+        Modelos de Razonamiento Híbridos: La nueva frontera computacional que redefinirá la IA
+      </h1>
+<!-- Metadata & Author Card Strip -->
+<div class="flex flex-wrap items-center justify-between gap-space-md py-space-sm bg-surface-container-low rounded-xl px-space-md">
+<div class="flex items-center gap-space-md">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm ring-2 ring-surface-container-lowest" data-alt="Portrait photography of Dr. Elena Ramos, an authoritative female computer scientist in her late thirties with minimalist round spectacles and dark tailored blazer in an ambient slate-hued artificial intelligence lab" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3Rbyll9VIOQPXOP6HEueRh4zJG50Cv_neYvfcRGjED679ryQJwEYDzsMBxjzu5x4fpfhCJt7TZM4xNKAkjEvGu5N80TFcENHrvXNO4UcbsRpTdprMWT1XkVwKRpeIORuCznjzFqZX43BoYizPIst8SnpXr8WjVAJ6MV4_WPcFdfayIPfmoE0F5zkgSvYXk7HGpabRaHbCq302fyucq5zZv0_9R7pWl08CUI3FmUgL363oMsoESG3kkA"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-bold">Dra. Elena Ramos</span>
+<span class="material-symbols-outlined text-[16px] text-primary" title="Autor Verificado">verified</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Especialista en Computación &amp; Neuroarquitecturas</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md font-caption text-caption text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>24 de Octubre, 2025</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>5 min de lectura</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="font-semibold text-on-surface">1.4k vistas</span>
+</div>
+</div>
+</div>
+</header>
+<!-- 3. Actions & Mini CRUD Bar -->
+<section aria-label="Herramientas del artículo" class="flex flex-wrap items-center justify-between gap-space-md p-space-sm bg-surface-container-lowest rounded-xl shadow-sm mb-space-xl">
+<!-- Left CRUD & Primary Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Interactive Bookmark (Favorite) Toggle -->
+<button class="inline-flex items-center gap-space-xs px-4 py-2 rounded-lg font-label-md text-label-md bg-surface-container hover:bg-surface-container-high text-on-surface transition-all active:scale-95" id="favorite-btn" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary" id="favorite-icon">bookmark_border</span>
+<span id="favorite-text">Agregar a Favoritos</span>
+</button>
+<!-- Contact Author Button -->
+<button class="inline-flex items-center gap-space-xs px-4 py-2 rounded-lg font-label-md text-label-md bg-surface-container-lowest hover:bg-surface-container text-on-surface transition-all shadow-sm" id="contact-btn" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">mail</span>
+<span>Contactar al Autor</span>
+</button>
+<!-- Danger Mini CRUD Trigger -->
+<button class="inline-flex items-center gap-space-xs px-3.5 py-2 rounded-lg font-label-md text-label-md bg-error-container/30 hover:bg-error-container text-error transition-all" id="delete-trigger-btn" title="Eliminar noticia del repositorio" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span class="hidden sm:inline">Eliminar noticia</span>
+</button>
+</div>
+<!-- Right Social Share Triggers -->
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption text-on-surface-variant mr-1 hidden md:inline">Compartir:</span>
+<button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-colors flex items-center justify-center" id="share-x-btn" title="Compartir en X" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+<button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-colors flex items-center justify-center" id="share-linkedin-btn" title="Compartir en LinkedIn" type="button">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</button>
+<button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-colors flex items-center justify-center" id="copy-link-btn" title="Copiar enlace permanente" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</section>
+<!-- Main Editorial Layout Grid (8 Columns Article + 4 Columns Context Sidebar) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+<!-- Article Content Primary Area (Cols 1-8) -->
+<article class="lg:col-span-8 space-y-space-lg">
+<!-- Large High Definition Hero Visual -->
+<figure class="space-y-space-xs">
+<div class="relative w-full rounded-2xl overflow-hidden shadow-md aspect-[16/9] bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" data-alt="Futuristic high-tech quantum computing processor unit with luminous cyan crystalline pathways, cobalt blue optical microchips, and abstract glowing neural circuit traces, digital photography studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtnBBD8sRC5tTJOce0TrCKZacmYGTV7ESkqaNoLvliETI_mQjgSi5nkBmlk3g7u5v0v-BvTebWTmkyOl7Diu7uSC37wW5kHQYKvyXkGmtHee3q1M8IH_wd-AKq6Y_JAIvKArNq0U1uH4AU2mvT1lVpB24LaStZ8RU6MobZJX8IY1eMh0CIrpLrsowLIiG3K55EFmrPr5kfdaXv_WLKMnGIYL_kVcAS4fmCx5simuUPWlcIl4YCKXMgEA"/>
+<div class="absolute bottom-3 left-3 px-3 py-1 bg-inverse-surface/80 backdrop-blur-md rounded-lg text-inverse-on-surface font-caption text-caption flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary-container">photo_camera</span>
+<span>Laboratorio Central de Silicio Cuántico, Zurich</span>
+</div>
+</div>
+<figcaption class="font-caption text-caption text-on-surface-variant px-1 text-center sm:text-left">
+            Estructuras de silicio óptico ejecutando la matriz de síntesis deductiva en pruebas operativas de noviembre de 2025.
+          </figcaption>
+</figure>
+<!-- Lead Paragraph (High Impact Typographic Texture) -->
+<p class="font-body-lead text-body-lead text-on-surface font-semibold leading-relaxed">
+          Durante años, el debate del machine learning se centró estrictamente en la escala de parámetros y la fuerza bruta de computación masiva. Sin embargo, un nuevo paradigma arquitectónico basado en razonamiento híbrido —que sincroniza inferencia probabilística con verificación simbólica formal— está desafiando las premisas de toda la industria tecnológica global.
+        </p>
+<!-- Body Section 1 -->
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">
+            El dilema de la inferencia lógica
+          </h2>
+<p class="font-body-base text-body-base text-on-surface-variant leading-relaxed">
+            Las redes neuronales tradicionales son extraordinarias reconociendo patrones asociativos en billones de tokens, pero tropiezan cuando deben mantener un encadenamiento causal inflexible. Los modelos generativos convencionales proyectan verosimilitud, mas no rigor deductivo verificable. 
+          </p>
+<p class="font-body-base text-body-base text-on-surface-variant leading-relaxed">
+            Aquí es donde los <strong class="text-on-surface">motores de inferencia dual</strong> transforman el panorama. Al segmentar la tarea entre un generador heurístico ágil y un demostrador de teoremas en tiempo real, el sistema elimina casi al 100% las alucinaciones factuales en cálculos matemáticos, auditorías de código fuente y diagnósticos médicos computarizados.
+          </p>
+<!-- Elegant Blockquote -->
+<div class="my-space-lg pl-space-md bg-surface-container-low py-space-md pr-space-md rounded-r-xl relative">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary-container rounded-l-full"></div>
+<p class="font-headline-sm text-headline-sm text-on-surface italic font-medium">
+              "No estamos escalando ciegamente más capas densas; estamos dotando a las redes neuronales de un árbitro lógico incorruptible que evalúa cada ramificación de pensamiento antes de emitir una respuesta."
+            </p>
+<div class="mt-space-sm flex items-center gap-space-xs font-label-md text-label-md text-primary font-bold">
+<span>— Memorando Técnico IEEE Spectrum, Q3 2025</span>
+</div>
+</div>
+</section>
+<!-- Technical Infographic & Interactive Comparison Widget -->
+<section class="space-y-space-sm p-space-md bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-primary font-bold tracking-wider uppercase">Infografía Técnica</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Precisión vs. Latencia por Arquitectura</h3>
+</div>
+<span class="px-2.5 py-1 bg-surface-container-lowest rounded-md text-outline font-caption text-caption font-semibold">Benchmark 2025</span>
+</div>
+<!-- Inline Custom SVG Chart -->
+<div class="pt-space-sm">
+<svg class="w-full h-auto text-on-surface" viewbox="0 0 700 240" xmlns="http://www.w3.org/2000/svg">
+<!-- Grid Lines -->
+<line stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.1" x1="120" x2="680" y1="40" y2="40"></line>
+<line stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.1" x1="120" x2="680" y1="100" y2="100"></line>
+<line stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.1" x1="120" x2="680" y1="160" y2="160"></line>
+<line stroke="currentColor" stroke-opacity="0.2" x1="120" x2="680" y1="210" y2="210"></line>
+<!-- Row 1: LLM Clásico de 70B -->
+<text class="text-caption font-caption fill-current opacity-70" font-size="12" x="20" y="55">LLM Clásico (70B)</text>
+<rect fill="#004ac6" height="22" opacity="0.3" rx="6" width="310" x="130" y="44"></rect>
+<text class="text-caption font-caption fill-current font-bold" font-size="12" x="450" y="60">62.4% Precisión</text>
+<!-- Row 2: Sistema con MoE y RAG -->
+<text class="text-caption font-caption fill-current opacity-70" font-size="12" x="20" y="115">MoE + RAG Dinámico</text>
+<rect fill="#004ac6" height="22" opacity="0.65" rx="6" width="410" x="130" y="104"></rect>
+<text class="text-caption font-caption fill-current font-bold" font-size="12" x="550" y="120">81.8% Precisión</text>
+<!-- Row 3: Híbrido Deductivo (Nuevo) -->
+<text class="text-caption font-caption fill-current font-bold" font-size="12" x="20" y="175">Híbrido Deductivo (v4)</text>
+<rect fill="#2563eb" height="22" rx="6" width="510" x="130" y="164"></rect>
+<text class="text-caption font-caption fill-current font-extrabold text-primary" font-size="12" x="648" y="180">97.6%</text>
+<text class="text-caption font-caption fill-current opacity-50" font-size="11" x="130" y="230">0% (Inferencia Nula)</text>
+<text class="text-caption font-caption fill-current opacity-50" font-size="11" x="640" y="230">100% Rigor</text>
+</svg>
+</div>
+<p class="font-caption text-caption text-on-surface-variant pt-space-xs">
+            Evaluación estandarizada en 10,000 problemas matemáticos de nivel olímpico (AIME &amp; USAMO) con verificación formal Lean4.
+          </p>
+</section>
+<!-- Body Section 2 -->
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">
+            Eficiencia energética frente a escala bruta
+          </h2>
+<p class="font-body-base text-body-base text-on-surface-variant leading-relaxed">
+            Hasta hace meses, la suposición predominante en los laboratorios de Silicon Valley era que la capacidad cognitiva requería clusters infinitos de GPU con consumos equivalentes a pequeñas ciudades. La llegada de los esquemas híbridos demuestra que optimizar los árboles de búsqueda deductiva reduce la necesidad de parámetros en hasta un 70%.
+          </p>
+<!-- Feature Bullets with Micro-Containers -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm pt-space-xs">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed/30 text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Consumo -64%</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Menos inferencias redundantes gracias al descarte temprano de trayectorias ilógicas.</p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed/50 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">memory</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Compilado Local</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Capacidad de ejecución en silicio edge sin necesidad constante de enlaces de fibra óptica a centros de datos.</p>
+</div>
+</div>
+<p class="font-body-base text-body-base text-on-surface-variant leading-relaxed pt-space-xs">
+            La transición de la fuerza bruta al razonamiento formal estructurado abre la puerta a asistentes científicos autónomos capaces de diseñar nuevos materiales superconductores, sintetizar medicamentos en horas y validar código crítico para navegación aeroespacial con garantías de cero defectos.
+          </p>
+</section>
+<!-- Topic Tags Pill Cluster -->
+<div class="pt-space-md flex flex-wrap items-center gap-space-xs">
+<span class="font-caption text-caption text-outline mr-2 font-bold uppercase tracking-wider">Temas:</span>
+<a class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-caption text-caption transition-colors" href="#">#InteligenciaArtificial</a>
+<a class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-caption text-caption transition-colors" href="#">#Hardware</a>
+<a class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-caption text-caption transition-colors" href="#">#Algoritmos</a>
+<a class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-caption text-caption transition-colors" href="#">#DeepTech</a>
+</div>
+</article>
+<!-- Context Sidebar (Cols 9-12) -->
+<aside class="lg:col-span-4 space-y-space-lg">
+<!-- Author Profile Bio Box -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm">
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wide">Sobre la redactora</span>
+<div class="flex items-center gap-space-sm">
+<img class="w-14 h-14 rounded-full object-cover shadow-sm ring-2 ring-primary/20" data-alt="Close up profile photo of Dr. Elena Ramos, modern technology writer and computer researcher in high-end studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBztUt7yii2llGQSGehavO75vmSqviucG6vfrH00qrRqMepJi0595HaGxVY80CU_2w-k6p-EJYv_TvU40hM56ZAsLkD3JigzkPXDaAukqtpe4AJUGRtFA9I2bXGUHhGZMHKsLWjCt122UDPffuwaiShwIoNCuDldLxC-v8xtT_xm48i2FsRN8y7cz8T9q_Ny8auc24VFV-DhNj76SpbLng6vjoCKciM10kIZvY9Ejh3gFt0KFrM7uFlfA"/>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Dra. Elena Ramos</h4>
+<p class="font-caption text-caption text-on-surface-variant">PhD en Ciencias de la Computación (ETH Zurich)</p>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Investiga arquitecturas neuro-simbólicas y aceleradores de tensores. Colaboradora principal en TechPulso desde 2023.
+          </p>
+<div class="pt-space-xs flex items-center justify-between text-primary font-label-sm text-label-sm">
+<a class="hover:underline flex items-center gap-1 font-bold" href="#">
+<span>Ver 42 artículos publicados</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Trending Highlights in Sidebar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">El Pulso del Día</h3>
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+</div>
+<div class="space-y-space-md">
+<!-- Rank 01 -->
+<a class="flex items-start gap-space-sm group" href="#">
+<span class="font-headline-lg text-headline-lg text-outline-variant font-bold leading-none select-none group-hover:text-primary transition-colors">01</span>
+<div class="space-y-0.5">
+<span class="font-caption text-caption text-secondary font-semibold uppercase">Microchips</span>
+<h5 class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors line-clamp-2">
+                  La litografía de 1.2nm entra en fase de testeo experimental
+                </h5>
+<span class="font-caption text-caption text-outline">Hace 2 horas</span>
+</div>
+</a>
+<!-- Rank 02 -->
+<a class="flex items-start gap-space-sm group" href="#">
+<span class="font-headline-lg text-headline-lg text-outline-variant font-bold leading-none select-none group-hover:text-primary transition-colors">02</span>
+<div class="space-y-0.5">
+<span class="font-caption text-caption text-tertiary font-semibold uppercase">Ciberdefensa</span>
+<h5 class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors line-clamp-2">
+                  Criptografía post-cuántica: el estándar que blindará las transacciones
+                </h5>
+<span class="font-caption text-caption text-outline">Hace 4 horas</span>
+</div>
+</a>
+<!-- Rank 03 -->
+<a class="flex items-start gap-space-sm group" href="#">
+<span class="font-headline-lg text-headline-lg text-outline-variant font-bold leading-none select-none group-hover:text-primary transition-colors">03</span>
+<div class="space-y-0.5">
+<span class="font-caption text-caption text-primary font-semibold uppercase">Espacio</span>
+<h5 class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors line-clamp-2">
+                  Antenas de matriz en fase y comunicación láser orbital
+                </h5>
+<span class="font-caption text-caption text-outline">Hace 6 horas</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Quick Newsletter Micro-Widget -->
+<div class="bg-primary p-space-md rounded-xl text-on-primary space-y-space-sm shadow-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-bold">TechPulso Briefing</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm font-bold leading-snug">
+            Recibe análisis riguroso en tu bandeja de entrada
+          </h4>
+<p class="font-caption text-caption text-primary-fixed leading-relaxed">
+            Sin spam ni titulares sensacionalistas. 1 resumen semanal curado por ingenieros.
+          </p>
+<div class="space-y-space-xs pt-1">
+<input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline rounded-lg px-3 py-2 font-body-sm text-body-sm focus:outline-none" placeholder="nombre@correo.com" type="email"/>
+<button class="w-full py-2 bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-label-md text-label-md rounded-lg font-bold transition-all shadow-sm" type="button">
+              Suscribirme
+            </button>
+</div>
+</div>
+</aside>
+</div>
+<!-- 5. Related News Section (3 Recommended Cards) -->
+<section class="mt-space-xl pt-space-lg bg-surface-container-low/50 rounded-2xl p-space-md sm:p-space-lg space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Continuar Explorando</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Noticias Relacionadas</h2>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:underline font-semibold" href="#">
+<span>Ver catálogo completo</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- 3 Card Editorial Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Related Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+<div class="relative aspect-[16/10] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Macro view of a shimmering silicon wafer microchip die surrounded by laser refraction patterns and deep blue reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9K1xGEVPDOMUC4oeBXbzQNbSvTuAHRlXYq_sjLSOpyJwcTjipYugv1tmukvfR7WaRkmtTijdhccAVC1zNMMauRHjJrC4GHp21HF6YOXhsXaoPS5epJCZAFye77dKxCqkpVC-sF4PZm2iIQ55GyDJfB-6q7vro70zY9WkqF3Q4N3m4gm4PNpPLRAc7xmO6KmdCxGemt64D1qgbkPFDpeHchBFisFdgYsNFjNCO6GHgHpzS9cZaIIbcyA"/>
+<span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-lowest/90 backdrop-blur-md text-primary font-bold">
+              Semiconductores
+            </span>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between space-y-space-sm">
+<div class="space-y-space-xs">
+<span class="font-caption text-caption text-outline">22 de Octubre, 2025 • 4 min</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors leading-snug">
+                El avance de empaquetado 3D que salva la Ley de Moore
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                Nuevas interconexiones verticales microscópicas multiplican la densidad de transistores sin elevar temperaturas críticas.
+              </p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Marcos Morales</span>
+<span class="material-symbols-outlined text-[20px] text-outline group-hover:text-primary transition-colors">arrow_outward</span>
+</div>
+</div>
+</article>
+<!-- Related Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+<div class="relative aspect-[16/10] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High tech server room hallway bathed in cooling cyan and indigo LED illumination with glass server racks and futuristic cable management" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACZlDR0q5TKue-MFLmqyxfpcR3FQGtR-5US6Cy2Yjg38v_GJYv-o52fq4xjC4g81nqoF8dWVEnNqVeUuFUCDF-Ch6Hu-U_Yysn6XjUT1SwQNcNOIcMnkus-rbkUfabE9uEi69mK6fSWsECahPEWH1Cym39tN0doZ9_nV78udcMLXRYKPZypFSHZDpX_pIB_2JkF_2AxP7B8DocK_1B893euRiPE2Uqeb7kIuGoVnhXdnBWmLfHrFoebQ"/>
+<span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-lowest/90 backdrop-blur-md text-tertiary font-bold">
+              Infraestructura
+            </span>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between space-y-space-sm">
+<div class="space-y-space-xs">
+<span class="font-caption text-caption text-outline">19 de Octubre, 2025 • 6 min</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors leading-snug">
+                Refrigeración por inmersión bifásica: el adiós a los ventiladores
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                Centros de datos en el norte de Europa logran un PUE récord de 1.03 utilizando fluidos dieléctricos sintéticos.
+              </p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Lucía Sotomayor</span>
+<span class="material-symbols-outlined text-[20px] text-outline group-hover:text-primary transition-colors">arrow_outward</span>
+</div>
+</div>
+</article>
+<!-- Related Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+<div class="relative aspect-[16/10] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Autonomous robotics arm precision-soldering nanoscale printed circuit board under ultra-crisp studio LED lighting with depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjQH5yeML1Vuon9klnlwIQTglEGM2CCJ5uTOPM9cdG5P6c729r__uvMhtA5XykTSgpWDv-upi_jhsDiPIciTjJVB4v-sozLOggf3-x1tor18AN5JUGR0r1FbiwTnwug6Hn3hRkDUmocAtMaS_D50Ne2hnu_uLoNkmpwJ51BY0bqNVvkiseDoIFmqjWXhA8B97nzLinPi97P6rf0MsBp4u7EGz6FFpiFR9X_3gN6JfMg0IC9A9yU4dZuA"/>
+<span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-bold">
+              Robótica
+            </span>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between space-y-space-sm">
+<div class="space-y-space-xs">
+<span class="font-caption text-caption text-outline">16 de Octubre, 2025 • 5 min</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors leading-snug">
+                Actuadores bio-inspirados y la próxima ola de brazos mecánicos
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                Polímeros electroactivos consiguen destreza a nivel micrométrico para manufactura aeroespacial automatizada.
+              </p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Carlos Alarcón</span>
+<span class="material-symbols-outlined text-[20px] text-outline group-hover:text-primary transition-colors">arrow_outward</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+</div>
+<!-- Interactive Logic Script -->
+<script>
+    (function() {
+      // Reading Progress Bar
+      const progressBar = document.getElementById('read-progress');
+      window.addEventListener('scroll', () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0) {
+          const progress = (window.scrollY / totalHeight) * 100;
+          progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+        }
+      });
+
+      // Toast Notification Utility
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      const toastIcon = document.getElementById('toast-icon');
+      let toastTimeout;
+
+      function showToast(message, icon = 'check_circle', isError = false) {
+        clearTimeout(toastTimeout);
+        toastMsg.textContent = message;
+        toastIcon.textContent = icon;
+        toastIcon.className = isError 
+          ? 'material-symbols-outlined text-[20px] text-error' 
+          : 'material-symbols-outlined text-[20px] text-tertiary-fixed';
+
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        toastTimeout = setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-20', 'opacity-0');
+        }, 3200);
+      }
+
+      // 1. Favorite Toggle Behavior
+      let isFavorited = false;
+      const favBtn = document.getElementById('favorite-btn');
+      const favIcon = document.getElementById('favorite-icon');
+      const favText = document.getElementById('favorite-text');
+
+      favBtn.addEventListener('click', () => {
+        isFavorited = !isFavorited;
+        if (isFavorited) {
+          favIcon.textContent = 'bookmark';
+          favIcon.style.fontVariationSettings = "'FILL' 1";
+          favIcon.classList.remove('text-primary');
+          favIcon.classList.add('text-primary-container');
+          favBtn.classList.add('bg-primary-fixed', 'text-on-primary-fixed');
+          favText.textContent = 'Guardado en Favoritos';
+          showToast('Artículo añadido a tus marcadores guardados', 'bookmark_added');
+        } else {
+          favIcon.textContent = 'bookmark_border';
+          favIcon.style.fontVariationSettings = "'FILL' 0";
+          favIcon.classList.add('text-primary');
+          favIcon.classList.remove('text-primary-container');
+          favBtn.classList.remove('bg-primary-fixed', 'text-on-primary-fixed');
+          favText.textContent = 'Agregar a Favoritos';
+          showToast('Artículo eliminado de tus marcadores', 'bookmark_remove');
+        }
+      });
+
+      // 2. Delete Mini CRUD Modal
+      const deleteTrigger = document.getElementById('delete-trigger-btn');
+      const deleteModal = document.getElementById('delete-modal');
+      const cancelDelete = document.getElementById('cancel-delete-btn');
+      const confirmDelete = document.getElementById('confirm-delete-btn');
+
+      deleteTrigger.addEventListener('click', () => {
+        deleteModal.classList.remove('hidden');
+        deleteModal.classList.add('flex');
+      });
+
+      cancelDelete.addEventListener('click', () => {
+        deleteModal.classList.add('hidden');
+        deleteModal.classList.remove('flex');
+      });
+
+      confirmDelete.addEventListener('click', () => {
+        deleteModal.classList.add('hidden');
+        deleteModal.classList.remove('flex');
+        showToast('La noticia ha sido eliminada con éxito', 'delete', true);
+      });
+
+      // 3. Contact Author Modal
+      const contactTrigger = document.getElementById('contact-btn');
+      const contactModal = document.getElementById('contact-modal');
+      const closeContact = document.getElementById('close-contact-modal');
+      const dismissContact = document.getElementById('dismiss-contact');
+      const contactForm = document.getElementById('contact-form');
+
+      function toggleContactModal(show) {
+        if (show) {
+          contactModal.classList.remove('hidden');
+          contactModal.classList.add('flex');
+        } else {
+          contactModal.classList.add('hidden');
+          contactModal.classList.remove('flex');
+        }
+      }
+
+      contactTrigger.addEventListener('click', () => toggleContactModal(true));
+      closeContact.addEventListener('click', () => toggleContactModal(false));
+      dismissContact.addEventListener('click', () => toggleContactModal(false));
+
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        toggleContactModal(false);
+        contactForm.reset();
+        showToast('Mensaje enviado a la Dra. Elena Ramos', 'mail');
+      });
+
+      // 4. Social Sharing & Copy Link
+      document.getElementById('copy-link-btn').addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href).catch(() => {});
+        showToast('Enlace copiado al portapapeles', 'link');
+      });
+
+      document.getElementById('share-x-btn').addEventListener('click', () => {
+        showToast('Preparando publicación en X (Twitter)...', 'share');
+      });
+
+      document.getElementById('share-linkedin-btn').addEventListener('click', () => {
+        showToast('Abriendo cuadro de diálogo de LinkedIn...', 'hub');
+      });
+    })();
+  </script>
+</div></main><footer class="w-full bg-inverse-surface text-inverse-on-surface"><div class="max-w-[1320px] mx-auto px-margin lg:px-margin-lg pt-margin-lg pb-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-lg"><div class="space-y-space-md"><div class="flex items-center gap-space-sm"><img alt="TechPulso Logo" class="h-7 w-auto object-contain brightness-0 invert" src="https://lh3.googleusercontent.com/aida/AEtjO1UtzdpvEEvZvFPWMbpzShTkE3ba-mpAzrkI4Ey7cVbh-MhniVPeuR-kpSy5w_5Nb0YT0kUvxGmJ2GiDwfgfkK8sT5ZrZ3ELn2_ayH-G7LZbG5K2Cs5-J9SQWeitGYluE5dhtSOdOV9wi5K3GAAMlfmS1SGm5TNz-WmiEuJuhE6dToD33djfYtDxlSCfFLG-fcjD8iKL-TZQoHF_znwA6tOajJwIgizh0Md_E-u7Omdc_HeXviT7AoAoo9q1"/><span class="font-headline-sm text-headline-sm text-surface-container-lowest tracking-tight font-bold">TechPulso</span></div><p class="font-body-sm text-body-sm text-outline-variant leading-relaxed">El pulso diario de la innovación tecnológica, inteligencia artificial y tendencias globales.</p><div class="flex items-center gap-space-sm pt-space-xs"><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">share</span></a><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">public</span></a><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">terminal</span></a><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">smart_display</span></a></div></div><div class="space-y-space-md"><h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Enlaces Rápidos</h4><ul class="space-y-space-sm font-body-sm text-body-sm"><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="inicio" href="#">Inicio</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Catálogo de Noticias</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="favoritos" href="#">Favoritos</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="sobre-nosotros" href="#">Sobre Nosotros</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="prensa" href="#">Prensa</a></li></ul></div><div class="space-y-space-md"><h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Categorías Populares</h4><ul class="space-y-space-sm font-body-sm text-body-sm"><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Tecnología</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Educativas</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Turísticas</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Comerciales</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Ciberseguridad</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Inteligencia Artificial</a></li></ul></div><div class="space-y-space-md"><h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Contacto y Newsletter</h4><p class="font-body-sm text-body-sm text-outline-variant">Suscríbete al resumen tech semanal</p><div class="flex items-center"><input class="w-full bg-surface-variant/10 border border-outline-variant/30 rounded-l-lg px-3 py-2 font-body-sm text-body-sm text-surface-container-lowest placeholder:text-outline focus:outline-none focus:border-secondary-container" placeholder="tu@email.com" type="email"/><button class="bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container px-4 py-2 rounded-r-lg font-label-md text-label-md transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[18px]">send</span></button></div><div class="space-y-space-xs pt-space-xs font-body-sm text-body-sm text-outline-variant"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px]">mail</span><span>contacto@techpulso.com</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px]">location_on</span><span>Silicon Valley / Madrid</span></div></div></div></div><div class="mt-margin-lg pt-space-md border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-between gap-space-md text-outline-variant font-caption text-caption"><p>© 2025 TechPulso Inc. Todos los derechos reservados.</p><div class="flex items-center gap-gutter"><span>Privacidad</span><span>Términos del Servicio</span><span>Cookies</span></div></div></div></footer></body></html>

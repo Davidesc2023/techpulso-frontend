@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary": "#004ac6",
+          "on-tertiary-fixed": "#002113",
+          "secondary-fixed": "#acedff",
+          "primary-fixed": "#dbe1ff",
+          "outline-variant": "#c3c6d7",
+          "on-primary-fixed": "#00174b",
+          "on-secondary-fixed": "#001f26",
+          "surface-container-highest": "#dae2fd",
+          "on-error": "#ffffff",
+          "inverse-primary": "#b4c5ff",
+          "inverse-on-surface": "#eef0ff",
+          "on-secondary": "#ffffff",
+          "surface-container-low": "#f2f3ff",
+          "surface-bright": "#faf8ff",
+          "background": "#faf8ff",
+          "surface-container": "#eaedff",
+          "error-container": "#ffdad6",
+          "error": "#ba1a1a",
+          "surface-dim": "#d2d9f4",
+          "secondary-fixed-dim": "#4cd7f6",
+          "surface-container-high": "#e2e7ff",
+          "surface-tint": "#0053db",
+          "on-tertiary": "#ffffff",
+          "tertiary-fixed": "#6ffbbe",
+          "on-surface": "#131b2e",
+          "on-primary": "#ffffff",
+          "surface-container-lowest": "#ffffff",
+          "tertiary-fixed-dim": "#4edea3",
+          "on-primary-fixed-variant": "#003ea8",
+          "surface": "#faf8ff",
+          "primary-container": "#2563eb",
+          "inverse-surface": "#283044",
+          "on-tertiary-fixed-variant": "#005236",
+          "outline": "#737686",
+          "tertiary": "#006242",
+          "on-primary-container": "#eeefff",
+          "on-background": "#131b2e",
+          "on-error-container": "#93000a",
+          "on-tertiary-container": "#bdffdb",
+          "on-surface-variant": "#434655",
+          "secondary-container": "#57dffe",
+          "on-secondary-container": "#006172",
+          "surface-variant": "#dae2fd",
+          "tertiary-container": "#007d55",
+          "on-secondary-fixed-variant": "#004e5c",
+          "secondary": "#00687a",
+          "primary-fixed-dim": "#b4c5ff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "gutter-sm": "1rem",
+          "gutter": "1.5rem",
+          "space-sm": "0.5rem",
+          "gutter-lg": "2rem",
+          "margin": "1.5rem",
+          "margin-sm": "1rem",
+          "space-xs": "0.25rem",
+          "space-xl": "2.5rem",
+          "space-md": "1rem",
+          "space-lg": "1.5rem",
+          "margin-lg": "3rem"
+        },
+        "fontFamily": {
+          "caption": [
+            "Plus Jakarta Sans"
+          ],
+          "body-lead": [
+            "Plus Jakarta Sans"
+          ],
+          "label-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "display-hero-mobile": [
+            "Plus Jakarta Sans"
+          ],
+          "body-base": [
+            "Plus Jakarta Sans"
+          ],
+          "body-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "display-hero": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-xl-mobile": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-xl": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-md": [
+            "Plus Jakarta Sans"
+          ],
+          "label-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-sm": [
+            "Plus Jakarta Sans"
+          ]
+        },
+        "fontSize": {
+          "caption": [
+            "0.75rem",
+            {
+              "lineHeight": "1.4",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lead": [
+            "1.125rem",
+            {
+              "lineHeight": "1.65",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "0.875rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "2rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "display-hero-mobile": [
+            "2.25rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "800"
+            }
+          ],
+          "body-base": [
+            "1rem",
+            {
+              "lineHeight": "1.6",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "0.875rem",
+            {
+              "lineHeight": "1.5",
+              "letterSpacing": "0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-hero": [
+            "3.5rem",
+            {
+              "lineHeight": "1.1",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "800"
+            }
+          ],
+          "headline-xl-mobile": [
+            "1.75rem",
+            {
+              "lineHeight": "1.25",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-xl": [
+            "2.5rem",
+            {
+              "lineHeight": "1.15",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-md": [
+            "1.5rem",
+            {
+              "lineHeight": "1.3",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "0.75rem",
+            {
+              "lineHeight": "1.2",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "1.25rem",
+            {
+              "lineHeight": "1.35",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-base text-body-base text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1320px] mx-auto px-margin lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm focus:outline-none" data-path="inicio" href="#"><img alt="TechPulso Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UtzdpvEEvZvFPWMbpzShTkE3ba-mpAzrkI4Ey7cVbh-MhniVPeuR-kpSy5w_5Nb0YT0kUvxGmJ2GiDwfgfkK8sT5ZrZ3ELn2_ayH-G7LZbG5K2Cs5-J9SQWeitGYluE5dhtSOdOV9wi5K3GAAMlfmS1SGm5TNz-WmiEuJuhE6dToD33djfYtDxlSCfFLG-fcjD8iKL-TZQoHF_znwA6tOajJwIgizh0Md_E-u7Omdc_HeXviT7AoAoo9q1"/><span class="font-headline-md text-headline-md text-primary tracking-tight font-bold">TechPulso</span></a></div><nav class="hidden lg:flex items-center gap-gutter" data-active-classes="text-primary font-bold border-b-2 border-primary pb-1"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="inicio" href="#">Inicio</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="noticias" href="#">Noticias</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="favoritos" href="#">Favoritos</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="categorias" href="#">Categorías</a><a aria-current="page" class="transition-colors text-primary font-bold border-b-2 border-primary pb-1" data-path="contacto" href="#">Contacto</a></nav><div class="flex items-center gap-space-md"><div class="relative hidden xl:block"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="bg-surface-container-lowest border border-outline-variant/50 rounded-full pl-9 pr-8 py-1.5 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary w-56 transition-all" placeholder="Buscar tecnología, temas..." type="text"/><span class="absolute right-3 top-1/2 -translate-y-1/2 font-caption text-caption text-outline">⌘K</span></div><a class="relative flex items-center justify-center p-2 rounded-full hover:bg-surface-container hover:text-on-surface text-on-surface-variant transition-colors" data-path="favoritos" href="#" title="Mis Favoritos"><span class="material-symbols-outlined text-[22px]">bookmark</span><span class="absolute -top-1 -right-1 bg-primary text-on-primary font-label-sm text-label-sm w-5 h-5 rounded-full flex items-center justify-center ring-2 ring-surface-container-lowest font-bold">3</span></a><a class="inline-flex items-center gap-space-xs bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.35)] active:scale-95" data-path="publicar-noticia" href="#"><span class="material-symbols-outlined text-[20px]">add</span><span>Publicar Noticia</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[340px] bg-gradient-to-tr from-primary/10 via-secondary-container/20 to-transparent blur-3xl pointer-events-none rounded-full"></div>
+<section class="max-w-[1320px] mx-auto px-margin lg:px-margin-lg pt-12 pb-8 w-full relative z-10">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-fixed/60 text-on-primary-fixed font-label-sm text-label-sm mb-4 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span>Canal de Comunicación Directa</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-extrabold tracking-tight mb-4 text-[#00174b]">
+          Ponte en Contacto con TechPulso
+        </h1>
+<p class="font-body-lead text-body-lead text-on-surface-variant max-w-2xl leading-relaxed">
+          ¿Tienes una primicia tecnológica, deseas anunciar tu producto o necesitas soporte? Escríbenos y te responderemos en menos de 24 horas.
+        </p>
+</div>
+</section>
+<section class="max-w-[1320px] mx-auto px-margin lg:px-margin-lg pb-space-xl w-full relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-7 bg-surface-container-lowest p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl flex flex-col relative">
+<div class="hidden mb-6 p-4 rounded-xl bg-tertiary text-on-tertiary shadow-md transition-all duration-300" id="successBanner">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[24px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold">¡Mensaje enviado con éxito!</span>
+<span class="font-body-sm text-body-sm text-on-tertiary-container">Nos pondremos en contacto contigo a la brevedad.</span>
+</div>
+</div>
+</div>
+<form class="space-y-6" id="contactForm" onsubmit="event.preventDefault(); handleFormSubmit();">
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1" for="fullName">
+                  Nombre completo <span class="text-error">*</span>
+</label>
+<span class="hidden items-center gap-1 text-tertiary font-caption text-caption" id="nameValidBadge">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Válido
+                </span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-low rounded-xl px-4 py-3.5 font-body-base text-body-base text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest shadow-sm transition-all pr-10" id="fullName" oninput="validateName(this)" placeholder="Ej. Martín De la Torre" required="" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[20px] transition-colors" id="nameIcon">badge</span>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1" for="emailAddress">
+                  Correo electrónico <span class="text-error">*</span>
+</label>
+<span class="hidden items-center gap-1 text-tertiary font-caption text-caption" id="emailValidBadge">
+<span class="material-symbols-outlined text-[16px]">verified</span> Formato correcto
+                </span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-low rounded-xl px-4 py-3.5 font-body-base text-body-base text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest shadow-sm transition-all pr-10" id="emailAddress" oninput="validateEmail(this)" placeholder="correo@ejemplo.com" required="" type="email"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[20px] transition-colors" id="emailIcon">mail</span>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface font-semibold mb-2" for="subjectSelect">
+                Asunto del Mensaje <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low rounded-xl px-4 py-3.5 font-body-base text-body-base text-on-surface focus:outline-none focus:bg-surface-container-lowest shadow-sm transition-all cursor-pointer pr-10" id="subjectSelect" required="">
+<option disabled="" selected="" value="">Selecciona un asunto...</option>
+<option value="primicia">Primicia / Noticia</option>
+<option value="publicidad">Publicidad comercial</option>
+<option value="educativa">Petición educativa</option>
+<option value="soporte">Soporte general</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[22px]">expand_more</span>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1" for="messageText">
+                  Mensaje <span class="text-error">*</span>
+</label>
+<span class="font-caption text-caption text-outline" id="charCount">0 / 1000</span>
+</div>
+<textarea class="w-full bg-surface-container-low rounded-xl p-4 font-body-base text-body-base text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest shadow-sm transition-all resize-y" id="messageText" maxlength="1000" oninput="updateCharCount(this)" placeholder="Describe tu propuesta, consulta o primicia con el mayor detalle posible..." required="" rows="5"></textarea>
+</div>
+<div class="flex items-start gap-3 pt-2">
+<div class="flex items-center h-5 mt-0.5">
+<input class="w-4 h-4 rounded bg-surface-container-low text-primary-container focus:ring-0 cursor-pointer accent-primary-container" id="privacyPolicy" required="" type="checkbox"/>
+</div>
+<label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer select-none" for="privacyPolicy">
+                Acepto la <span class="text-primary font-semibold hover:underline">política de privacidad</span> de datos de TechPulso y autorizo el tratamiento informativo de mi solicitud.
+              </label>
+</div>
+<div class="pt-3">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-8 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-[0.98] cursor-pointer" type="submit">
+<span>Enviar Mensaje</span>
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</form>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-surface-container-lowest p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[24px]">newspaper</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Redacción Central</h3>
+<p class="font-caption text-caption text-on-surface-variant">Sede editorial y corresponsalía</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary text-[22px] mt-0.5">apartment</span>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Dirección física</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">TechPulso Media Hub, Paseo de la Castellana 210, Madrid, España</div>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary text-[22px] mt-0.5">alternate_email</span>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Correo editorial</div>
+<a class="font-body-sm text-body-sm text-primary font-medium hover:underline" href="mailto:redaccion@techpulso.com">redaccion@techpulso.com</a>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary text-[22px] mt-0.5">call</span>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Teléfono de atención</div>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="tel:+34912345678">+34 912 345 678</a>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary text-[22px] mt-0.5">schedule</span>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Horario de atención</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Lunes a Viernes de 09:00 a 19:00 CET</div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline block mb-3 font-bold">Redes &amp; Comunidad Tech</span>
+<div class="grid grid-cols-2 gap-2.5">
+<a class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-all font-label-md text-label-md shadow-sm group" href="#">
+<span class="material-symbols-outlined text-[18px] text-outline group-hover:text-on-primary transition-colors">tag</span>
+<span>X (Twitter)</span>
+</a>
+<a class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-all font-label-md text-label-md shadow-sm group" href="#">
+<span class="material-symbols-outlined text-[18px] text-outline group-hover:text-on-primary transition-colors">work</span>
+<span>LinkedIn</span>
+</a>
+<a class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-all font-label-md text-label-md shadow-sm group" href="#">
+<span class="material-symbols-outlined text-[18px] text-outline group-hover:text-on-primary transition-colors">send</span>
+<span>Telegram Tech</span>
+</a>
+<a class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-all font-label-md text-label-md shadow-sm group" href="#">
+<span class="material-symbols-outlined text-[18px] text-outline group-hover:text-on-primary transition-colors">smart_display</span>
+<span>YouTube</span>
+</a>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl shadow-xl flex flex-col">
+<div class="flex items-center justify-between mb-3 px-2">
+<span class="font-label-md text-label-md font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">pin_drop</span>
+                Ubicación TechPulso Hub
+              </span>
+<span class="font-caption text-caption text-outline">Madrid, ES</span>
+</div>
+<div class="relative w-full h-56 rounded-xl overflow-hidden shadow-inner bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-location="Paseo de la Castellana 210, Madrid, Espana" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0Bmjqtag9GWOSHkHuN1rPPCAgrwPe4j6A5bvAdGhlUoDD0bMQCpBRV_ebjhp8sX3BPDjchOcumJjicPy1Ncnxf5AGM4W-eX6XjL5R862ptjcWF179p9_u2YS3DGKBHesCVxCGPKX37e4HQztUB_r-zq4T_pMVq7Da9Yue37uhM2vjzaHsel9UXhmOmSB31LALaojPZWFg7QbacqB29EG9D091gbeMl9UUI0NlDoZi_HzVzKm74Fej4g');"></div>
+<div class="absolute inset-0 bg-primary/10 pointer-events-none mix-blend-multiply"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="relative flex items-center justify-center">
+<div class="w-12 h-12 bg-primary-container/30 rounded-full animate-ping absolute"></div>
+<div class="w-10 h-10 bg-primary-container text-on-primary rounded-full flex items-center justify-center shadow-xl relative z-10">
+<span class="material-symbols-outlined text-[22px]">corporate_fare</span>
+</div>
+</div>
+<div class="mt-2 bg-on-surface/90 text-surface-bright backdrop-blur-md px-2.5 py-1 rounded-md shadow-lg flex items-center gap-1 font-caption text-caption font-semibold">
+<span>Castellana 210</span>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
+<span class="font-caption text-caption text-on-surface font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> Abierto a colaboradores
+                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<script>
+  function validateName(input) {
+    const badge = document.getElementById('nameValidBadge');
+    const icon = document.getElementById('nameIcon');
+    if (input.value.trim().length >= 3) {
+      badge.classList.remove('hidden');
+      badge.classList.add('flex');
+      icon.classList.remove('text-outline');
+      icon.classList.add('text-tertiary');
+    } else {
+      badge.classList.add('hidden');
+      badge.classList.remove('flex');
+      icon.classList.add('text-outline');
+      icon.classList.remove('text-tertiary');
+    }
+  }
+
+  function validateEmail(input) {
+    const badge = document.getElementById('emailValidBadge');
+    const icon = document.getElementById('emailIcon');
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (re.test(input.value.trim())) {
+      badge.classList.remove('hidden');
+      badge.classList.add('flex');
+      icon.classList.remove('text-outline');
+      icon.classList.add('text-tertiary');
+    } else {
+      badge.classList.add('hidden');
+      badge.classList.remove('flex');
+      icon.classList.add('text-outline');
+      icon.classList.remove('text-tertiary');
+    }
+  }
+
+  function updateCharCount(textarea) {
+    const counter = document.getElementById('charCount');
+    const length = textarea.value.length;
+    counter.textContent = `${length} / 1000`;
+    if (length >= 950) {
+      counter.classList.add('text-error');
+      counter.classList.remove('text-outline');
+    } else {
+      counter.classList.remove('text-error');
+      counter.classList.add('text-outline');
+    }
+  }
+
+  function handleFormSubmit() {
+    const banner = document.getElementById('successBanner');
+    const form = document.getElementById('contactForm');
+    banner.classList.remove('hidden');
+    banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    form.reset();
+    document.getElementById('charCount').textContent = '0 / 1000';
+    document.getElementById('nameValidBadge').classList.add('hidden');
+    document.getElementById('nameValidBadge').classList.remove('flex');
+    document.getElementById('emailValidBadge').classList.add('hidden');
+    document.getElementById('emailValidBadge').classList.remove('flex');
+    document.getElementById('nameIcon').classList.add('text-outline');
+    document.getElementById('nameIcon').classList.remove('text-tertiary');
+    document.getElementById('emailIcon').classList.add('text-outline');
+    document.getElementById('emailIcon').classList.remove('text-tertiary');
+  }
+</script></main><footer class="w-full bg-inverse-surface text-inverse-on-surface"><div class="max-w-[1320px] mx-auto px-margin lg:px-margin-lg pt-margin-lg pb-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-lg"><div class="space-y-space-md"><div class="flex items-center gap-space-sm"><img alt="TechPulso Logo" class="h-7 w-auto object-contain brightness-0 invert" src="https://lh3.googleusercontent.com/aida/AEtjO1UtzdpvEEvZvFPWMbpzShTkE3ba-mpAzrkI4Ey7cVbh-MhniVPeuR-kpSy5w_5Nb0YT0kUvxGmJ2GiDwfgfkK8sT5ZrZ3ELn2_ayH-G7LZbG5K2Cs5-J9SQWeitGYluE5dhtSOdOV9wi5K3GAAMlfmS1SGm5TNz-WmiEuJuhE6dToD33djfYtDxlSCfFLG-fcjD8iKL-TZQoHF_znwA6tOajJwIgizh0Md_E-u7Omdc_HeXviT7AoAoo9q1"/><span class="font-headline-sm text-headline-sm text-surface-container-lowest tracking-tight font-bold">TechPulso</span></div><p class="font-body-sm text-body-sm text-outline-variant leading-relaxed">El pulso diario de la innovación tecnológica, inteligencia artificial y tendencias globales.</p><div class="flex items-center gap-space-sm pt-space-xs"><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">share</span></a><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">public</span></a><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">terminal</span></a><a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">smart_display</span></a></div></div><div class="space-y-space-md"><h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Enlaces Rápidos</h4><ul class="space-y-space-sm font-body-sm text-body-sm"><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="inicio" href="#">Inicio</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Catálogo de Noticias</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="favoritos" href="#">Favoritos</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="sobre-nosotros" href="#">Sobre Nosotros</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="prensa" href="#">Prensa</a></li></ul></div><div class="space-y-space-md"><h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Categorías Populares</h4><ul class="space-y-space-sm font-body-sm text-body-sm"><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Tecnología</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Educativas</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Turísticas</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Comerciales</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Ciberseguridad</a></li><li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="#">Inteligencia Artificial</a></li></ul></div><div class="space-y-space-md"><h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Contacto y Newsletter</h4><p class="font-body-sm text-body-sm text-outline-variant">Suscríbete al resumen tech semanal</p><div class="flex items-center"><input class="w-full bg-surface-variant/10 border border-outline-variant/30 rounded-l-lg px-3 py-2 font-body-sm text-body-sm text-surface-container-lowest placeholder:text-outline focus:outline-none focus:border-secondary-container" placeholder="tu@email.com" type="email"/><button class="bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container px-4 py-2 rounded-r-lg font-label-md text-label-md transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[18px]">send</span></button></div><div class="space-y-space-xs pt-space-xs font-body-sm text-body-sm text-outline-variant"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px]">mail</span><span>contacto@techpulso.com</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px]">location_on</span><span>Silicon Valley / Madrid</span></div></div></div></div><div class="mt-margin-lg pt-space-md border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-between gap-space-md text-outline-variant font-caption text-caption"><p>© 2025 TechPulso Inc. Todos los derechos reservados.</p><div class="flex items-center gap-gutter"><span>Privacidad</span><span>Términos del Servicio</span><span>Cookies</span></div></div></div></footer></body></html>
