@@ -1,0 +1,33 @@
+/* ==========================================================
+   TechPulso - Estilos base
+   Politécnico Gran Colombiano - Módulo Front-End - Subgrupo 26
+
+   Casi todo el diseño del sitio está resuelto con clases de
+   utilidad de Tailwind directo en el HTML (así lo generó la
+   maquetación en Figma/Stitch). Este archivo solo tiene los
+   ajustes base que no dependen de una clase puntual: quitar
+   márgenes por defecto del navegador y ocultar la barra de
+   scroll para que se vea más limpio. Se comparte entre las
+   5 vistas del proyecto.
+   ========================================================== */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+main > :first-child {
+  margin-top: 0 !important;
+}
+
+main > :last-child {
+  margin-bottom: 0 !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
