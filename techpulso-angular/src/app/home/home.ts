@@ -7,10 +7,12 @@
   plantilla home.html lo llama con eventos de Angular: (click) y (submit).
 */
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  // Esta vista no usa otros componentes dentro de su plantilla.
-  imports: [],
+  // Herramienta de Angular que usa la plantilla home.html:
+  // - RouterLink: enlaces que navegan entre vistas sin recargar la página.
+  imports: [RouterLink],
   // Etiqueta del componente. Las vistas se muestran mediante el router,
   // así que normalmente no se usa directamente en otra plantilla.
   selector: 'app-home',
@@ -23,8 +25,8 @@ export class Home {
   /*
     Botón de marcador de cada tarjeta: pinta el botón de azul y rellena el
     ícono; al volver a hacer clic, los deja como estaban. Por ahora solo
-    cambia el aspecto, no guarda nada. Más adelante se reemplaza por los
-    favoritos reales, guardados en localStorage.
+    cambia el aspecto, no guarda nada: las noticias de Inicio no están en
+    noticias.json, así que no se pueden guardar en favoritos todavía.
   */
   alternarFavorito(evento: Event): void {
     const boton = evento.currentTarget as HTMLElement;

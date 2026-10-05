@@ -1,15 +1,493 @@
 <!--
   TechPulso - detalle.html (vista de Detalle de Noticia)
+  Politécnico Gran Colombiano - Módulo Front-End - Grupo B02 / Subgrupo 26
 
-  CONTENIDO TEMPORAL: sirve para comprobar que el router muestra esta vista
-  entre el header y el footer. Después se reemplaza por el contenido real
-  de detalle.html de la Entrega 2.
+  Muestra un artículo completo: barra de progreso de lectura, datos del
+  autor, botones de acción, contenido, barra lateral y noticias relacionadas.
+  La lógica está en detalle.ts.
 
-  El espacio superior pt-20 (5rem) evita que el header fijo tape el
-  contenido.
+  Notas:
+  - La barra de progreso de arriba se llena según se baja por la página.
+  - "Agregar a Favoritos" guarda este artículo en la lista de favoritos
+    (servicio de favoritos, localStorage) y cambia de aspecto cuando ya está
+    guardado.
+  - Las ventanas de "Eliminar noticia" y "Contactar al Autor" solo existen
+    en la página mientras están abiertas (bloques if).
+  - "Eliminar noticia" es simulado: este artículo es fijo y no pertenece a
+    las noticias del catálogo, que sí se eliminan desde su tarjeta.
+  - En los SVG el atributo se escribe viewBox con la B mayúscula: Angular
+    distingue mayúsculas y minúsculas y, escrito en minúscula, el navegador
+    lo ignora.
+  - Los enlaces con # son marcadores sin destino todavía.
+  - El aviso de confirmación es el componente compartido app-toast.
+  - El espacio superior pt-20 evita que el header fijo tape el contenido.
+  - Las imágenes vienen de enlaces externos de Google.
 -->
-<main class="pt-20 min-h-screen bg-background">
-  <p class="p-margin text-on-surface font-body-base text-body-base">
-    Vista de Detalle de Noticia (detalle funciona)
-  </p>
+
+<main class="w-full pt-20 bg-background min-h-screen">
+  <div class="flex flex-col w-full">
+    <!-- Barra de progreso de lectura (se llena al bajar por el artículo) -->
+    <div class="fixed top-20 left-0 h-1 bg-primary-container z-40 transition-all duration-150 w-0" [style.width.%]="progreso()">
+    </div>
+    <!-- Ventana de confirmación para eliminar la noticia. Solo existe en la página mientras mostrarEliminar() sea verdadero -->
+    @if (mostrarEliminar()) {
+      <div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-gutter">
+        <div class="bg-surface-container-lowest rounded-xl max-w-md w-full p-space-lg shadow-2xl space-y-space-md animate-in fade-in zoom-in-95 duration-200">
+          <div class="w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center">
+            <span class="material-symbols-outlined text-[28px]">warning</span>
+          </div>
+          <div class="space-y-space-xs">
+            <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">¿Eliminar esta publicación?</h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Esta acción eliminará el artículo "Modelos de Razonamiento Híbridos" de la base editorial de TechPulso. No podrás recuperar este contenido.</p>
+          </div>
+          <div class="flex items-center justify-end gap-space-sm pt-space-xs">
+            <button class="px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors" (click)="cerrarEliminar()" type="button">
+              Cancelar
+            </button>
+            <button class="px-4 py-2 rounded-lg font-label-md text-label-md bg-error text-on-error hover:bg-on-error-container transition-colors shadow-md" (click)="confirmarEliminar()" type="button">
+              Sí, eliminar publicación
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+    <!-- Ventana para contactar al autor. Solo existe en la página mientras mostrarContacto() sea verdadero -->
+    @if (mostrarContacto()) {
+      <div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-gutter">
+        <div class="bg-surface-container-lowest rounded-xl max-w-lg w-full p-space-lg shadow-2xl space-y-space-md">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-space-sm">
+              <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                <span class="material-symbols-outlined text-[22px]">alternate_email</span>
+              </div>
+              <div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Contactar a la Redacción</h3>
+                <p class="font-caption text-caption text-on-surface-variant">Destinatario: Dra. Elena Ramos &amp; TechPulso Editorial</p>
+              </div>
+            </div>
+            <button class="text-outline hover:text-on-surface p-1 rounded-lg" (click)="cerrarContacto()" type="button">
+              <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+          </div>
+          <form class="space-y-space-sm" (submit)="enviarMensaje($event)">
+            <div>
+              <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Tu Nombre Completo</label>
+              <input class="w-full bg-surface-container-low rounded-lg px-3 py-2 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Ej. Dr. Mario Vargas" required="" type="text"/>
+            </div>
+            <div>
+              <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Correo Institucional / Personal</label>
+              <input class="w-full bg-surface-container-low rounded-lg px-3 py-2 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="correo@instituto.org" required="" type="email"/>
+            </div>
+            <div>
+              <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Mensaje o Consulta Técnica</label>
+              <textarea class="w-full bg-surface-container-low rounded-lg px-3 py-2 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Escribe tu consulta sobre benchmarks, cooperación o réplicas de datos..." required="" rows="4">
+              </textarea>
+            </div>
+            <div class="flex justify-end gap-space-sm pt-space-xs">
+              <button class="px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container" (click)="cerrarContacto()" type="button">Cerrar</button>
+              <button class="px-5 py-2 rounded-lg font-label-md text-label-md bg-primary text-on-primary hover:bg-primary-container shadow-md flex items-center gap-space-xs" type="submit">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+                <span>Enviar Mensaje</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    }
+    <!-- Contenedor principal del artículo -->
+    <div class="max-w-[1320px] mx-auto w-full px-margin lg:px-margin-lg py-space-lg">
+      <!-- 1. Ruta de navegación (breadcrumb) -->
+      <nav aria-label="Ruta de navegación" class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant py-space-xs overflow-x-auto whitespace-nowrap">
+        <a class="hover:text-primary transition-colors flex items-center gap-1" routerLink="/">
+          <span class="material-symbols-outlined text-[16px]">home</span>
+          <span>Inicio</span>
+        </a>
+        <span class="text-outline-variant">/</span>
+        <a class="hover:text-primary transition-colors" routerLink="/noticias">Noticias</a>
+        <span class="text-outline-variant">/</span>
+        <a class="hover:text-primary transition-colors font-medium" routerLink="/noticias">Tecnología</a>
+        <span class="text-outline-variant">/</span>
+        <span class="text-on-surface font-semibold truncate max-w-[280px] sm:max-w-none">Modelos de Razonamiento Híbridos</span>
+      </nav>
+      <!-- 2. Encabezado editorial -->
+      <header class="mt-space-md mb-space-lg space-y-space-md">
+        <!-- Insignia de categoría y estado -->
+        <div class="flex flex-wrap items-center gap-space-sm">
+          <span class="inline-flex items-center px-3 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container/25 text-on-secondary-container font-bold tracking-wider uppercase">
+            Tecnología
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-label-sm bg-tertiary-fixed/30 text-tertiary font-semibold">
+            <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse">
+            </span>
+            Investigación Profunda
+          </span>
+        </div>
+        <!-- Título principal -->
+        <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight max-w-5xl">
+          Modelos de Razonamiento Híbridos: La nueva frontera computacional que redefinirá la IA
+        </h1>
+        <!-- Franja de metadatos y tarjeta del autor -->
+        <div class="flex flex-wrap items-center justify-between gap-space-md py-space-sm bg-surface-container-low rounded-xl px-space-md">
+          <div class="flex items-center gap-space-md">
+            <img class="w-12 h-12 rounded-full object-cover shadow-sm ring-2 ring-surface-container-lowest" data-alt="Portrait photography of Dr. Elena Ramos, an authoritative female computer scientist in her late thirties with minimalist round spectacles and dark tailored blazer in an ambient slate-hued artificial intelligence lab" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3Rbyll9VIOQPXOP6HEueRh4zJG50Cv_neYvfcRGjED679ryQJwEYDzsMBxjzu5x4fpfhCJt7TZM4xNKAkjEvGu5N80TFcENHrvXNO4UcbsRpTdprMWT1XkVwKRpeIORuCznjzFqZX43BoYizPIst8SnpXr8WjVAJ6MV4_WPcFdfayIPfmoE0F5zkgSvYXk7HGpabRaHbCq302fyucq5zZv0_9R7pWl08CUI3FmUgL363oMsoESG3kkA"/>
+            <div class="flex flex-col">
+              <div class="flex items-center gap-1.5">
+                <span class="font-label-md text-label-md text-on-surface font-bold">Dra. Elena Ramos</span>
+                <span class="material-symbols-outlined text-[16px] text-primary" title="Autor Verificado">verified</span>
+              </div>
+              <span class="font-caption text-caption text-on-surface-variant">Especialista en Computación &amp; Neuroarquitecturas</span>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-space-md font-caption text-caption text-on-surface-variant">
+            <div class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+              <span>24 de Octubre, 2025</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-[18px]">schedule</span>
+              <span>5 min de lectura</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-[18px]">visibility</span>
+              <span class="font-semibold text-on-surface">1.4k vistas</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- 3. Barra de acciones y mini CRUD -->
+      <section aria-label="Herramientas del artículo" class="flex flex-wrap items-center justify-between gap-space-md p-space-sm bg-surface-container-lowest rounded-xl shadow-sm mb-space-xl">
+        <!-- Botones de acción principal (izquierda) -->
+        <div class="flex flex-wrap items-center gap-space-sm">
+          <!-- Botón de favorito: guarda o quita el artículo en la lista de favoritos -->
+          <button class="inline-flex items-center gap-space-xs px-4 py-2 rounded-lg font-label-md text-label-md bg-surface-container hover:bg-surface-container-high text-on-surface transition-all active:scale-95" [class.bg-primary-fixed]="esFavorito()" [class.text-on-primary-fixed]="esFavorito()" (click)="alternarFavorito()" type="button">
+            <span class="material-symbols-outlined text-[20px]" [class.text-primary]="!esFavorito()" [class.text-primary-container]="esFavorito()" [style.font-variation-settings]="variacionIcono()">{{ esFavorito() ? 'bookmark' : 'bookmark_border' }}</span>
+            <span>{{ esFavorito() ? 'Guardado en Favoritos' : 'Agregar a Favoritos' }}</span>
+          </button>
+          <!-- Botón que abre la ventana para contactar al autor -->
+          <button class="inline-flex items-center gap-space-xs px-4 py-2 rounded-lg font-label-md text-label-md bg-surface-container-lowest hover:bg-surface-container text-on-surface transition-all shadow-sm" (click)="abrirContacto()" type="button">
+            <span class="material-symbols-outlined text-[20px] text-primary">mail</span>
+            <span>Contactar al Autor</span>
+          </button>
+          <!-- Botón de eliminar (simulado: este artículo es fijo y no está en el catálogo) -->
+          <button class="inline-flex items-center gap-space-xs px-3.5 py-2 rounded-lg font-label-md text-label-md bg-error-container/30 hover:bg-error-container text-error transition-all" title="Eliminar noticia del repositorio" (click)="abrirEliminar()" type="button">
+            <span class="material-symbols-outlined text-[18px]">delete</span>
+            <span class="hidden sm:inline">Eliminar noticia</span>
+          </button>
+        </div>
+        <!-- Botones para compartir (derecha) -->
+        <div class="flex items-center gap-space-xs">
+          <span class="font-caption text-caption text-on-surface-variant mr-1 hidden md:inline">Compartir:</span>
+          <button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-colors flex items-center justify-center" title="Compartir en X" (click)="compartirX()" type="button">
+            <span class="material-symbols-outlined text-[18px]">share</span>
+          </button>
+          <button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-colors flex items-center justify-center" title="Compartir en LinkedIn" (click)="compartirLinkedIn()" type="button">
+            <span class="material-symbols-outlined text-[18px]">hub</span>
+          </button>
+          <button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-colors flex items-center justify-center" title="Copiar enlace permanente" (click)="copiarEnlace()" type="button">
+            <span class="material-symbols-outlined text-[18px]">content_copy</span>
+          </button>
+        </div>
+      </section>
+      <!-- Cuadrícula principal (8 columnas de artículo + 4 de barra lateral) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+        <!-- Área principal del artículo (columnas 1-8) -->
+        <article class="lg:col-span-8 space-y-space-lg">
+          <!-- Imagen principal en alta definición -->
+          <figure class="space-y-space-xs">
+            <div class="relative w-full rounded-2xl overflow-hidden shadow-md aspect-[16/9] bg-surface-container">
+              <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" data-alt="Futuristic high-tech quantum computing processor unit with luminous cyan crystalline pathways, cobalt blue optical microchips, and abstract glowing neural circuit traces, digital photography studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtnBBD8sRC5tTJOce0TrCKZacmYGTV7ESkqaNoLvliETI_mQjgSi5nkBmlk3g7u5v0v-BvTebWTmkyOl7Diu7uSC37wW5kHQYKvyXkGmtHee3q1M8IH_wd-AKq6Y_JAIvKArNq0U1uH4AU2mvT1lVpB24LaStZ8RU6MobZJX8IY1eMh0CIrpLrsowLIiG3K55EFmrPr5kfdaXv_WLKMnGIYL_kVcAS4fmCx5simuUPWlcIl4YCKXMgEA"/>
+              <div class="absolute bottom-3 left-3 px-3 py-1 bg-inverse-surface/80 backdrop-blur-md rounded-lg text-inverse-on-surface font-caption text-caption flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-secondary-container">photo_camera</span>
+                <span>Laboratorio Central de Silicio Cuántico, Zurich</span>
+              </div>
+            </div>
+            <figcaption class="font-caption text-caption text-on-surface-variant px-1 text-center sm:text-left">
+              Estructuras de silicio óptico ejecutando la matriz de síntesis deductiva en pruebas operativas de noviembre de 2025.
+            </figcaption>
+          </figure>
+          <!-- Párrafo de entrada (con énfasis tipográfico) -->
+          <p class="font-body-lead text-body-lead text-on-surface font-semibold leading-relaxed">
+            Durante años, el debate del machine learning se centró estrictamente en la escala de parámetros y la fuerza bruta de computación masiva. Sin embargo, un nuevo paradigma arquitectónico basado en razonamiento híbrido —que sincroniza inferencia probabilística con verificación simbólica formal— está desafiando las premisas de toda la industria tecnológica global.
+          </p>
+          <!-- Sección de cuerpo 1 -->
+          <section class="space-y-space-md">
+            <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">
+              El dilema de la inferencia lógica
+            </h2>
+            <p class="font-body-base text-body-base text-on-surface-variant leading-relaxed">
+              Las redes neuronales tradicionales son extraordinarias reconociendo patrones asociativos en billones de tokens, pero tropiezan cuando deben mantener un encadenamiento causal inflexible. Los modelos generativos convencionales proyectan verosimilitud, mas no rigor deductivo verificable.
+            </p>
+            <p class="font-body-base text-body-base text-on-surface-variant leading-relaxed">
+              Aquí es donde los <strong class="text-on-surface">motores de inferencia dual</strong> transforman el panorama. Al segmentar la tarea entre un generador heurístico ágil y un demostrador de teoremas en tiempo real, el sistema elimina casi al 100% las alucinaciones factuales en cálculos matemáticos, auditorías de código fuente y diagnósticos médicos computarizados.
+            </p>
+            <!-- Cita destacada -->
+            <div class="my-space-lg pl-space-md bg-surface-container-low py-space-md pr-space-md rounded-r-xl relative">
+              <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary-container rounded-l-full">
+              </div>
+              <p class="font-headline-sm text-headline-sm text-on-surface italic font-medium">
+                "No estamos escalando ciegamente más capas densas; estamos dotando a las redes neuronales de un árbitro lógico incorruptible que evalúa cada ramificación de pensamiento antes de emitir una respuesta."
+              </p>
+              <div class="mt-space-sm flex items-center gap-space-xs font-label-md text-label-md text-primary font-bold">
+                <span>— Memorando Técnico IEEE Spectrum, Q3 2025</span>
+              </div>
+            </div>
+          </section>
+          <!-- Infografía técnica y comparación -->
+          <section class="space-y-space-sm p-space-md bg-surface-container-low rounded-xl">
+            <div class="flex items-center justify-between">
+              <div class="space-y-0.5">
+                <span class="font-label-sm text-label-sm text-primary font-bold tracking-wider uppercase">Infografía Técnica</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Precisión vs. Latencia por Arquitectura</h3>
+              </div>
+              <span class="px-2.5 py-1 bg-surface-container-lowest rounded-md text-outline font-caption text-caption font-semibold">Benchmark 2025</span>
+            </div>
+            <!-- Gráfico SVG personalizado -->
+            <div class="pt-space-sm">
+              <svg class="w-full h-auto text-on-surface" viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg">
+                <!-- Líneas de la cuadrícula -->
+                <line stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.1" x1="120" x2="680" y1="40" y2="40">
+                </line>
+                <line stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.1" x1="120" x2="680" y1="100" y2="100">
+                </line>
+                <line stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.1" x1="120" x2="680" y1="160" y2="160">
+                </line>
+                <line stroke="currentColor" stroke-opacity="0.2" x1="120" x2="680" y1="210" y2="210">
+                </line>
+                <!-- Fila 1: LLM Clásico de 70B -->
+                <text class="text-caption font-caption fill-current opacity-70" font-size="12" x="20" y="55">LLM Clásico (70B)</text>
+                <rect fill="#004ac6" height="22" opacity="0.3" rx="6" width="310" x="130" y="44">
+                </rect>
+                <text class="text-caption font-caption fill-current font-bold" font-size="12" x="450" y="60">62.4% Precisión</text>
+                <!-- Fila 2: Sistema con MoE y RAG -->
+                <text class="text-caption font-caption fill-current opacity-70" font-size="12" x="20" y="115">MoE + RAG Dinámico</text>
+                <rect fill="#004ac6" height="22" opacity="0.65" rx="6" width="410" x="130" y="104">
+                </rect>
+                <text class="text-caption font-caption fill-current font-bold" font-size="12" x="550" y="120">81.8% Precisión</text>
+                <!-- Fila 3: Híbrido Deductivo (Nuevo) -->
+                <text class="text-caption font-caption fill-current font-bold" font-size="12" x="20" y="175">Híbrido Deductivo (v4)</text>
+                <rect fill="#2563eb" height="22" rx="6" width="510" x="130" y="164">
+                </rect>
+                <text class="text-caption font-caption fill-current font-extrabold text-primary" font-size="12" x="648" y="180">97.6%</text>
+                <text class="text-caption font-caption fill-current opacity-50" font-size="11" x="130" y="230">0% (Inferencia Nula)</text>
+                <text class="text-caption font-caption fill-current opacity-50" font-size="11" x="640" y="230">100% Rigor</text>
+              </svg>
+            </div>
+            <p class="font-caption text-caption text-on-surface-variant pt-space-xs">
+              Evaluación estandarizada en 10,000 problemas matemáticos de nivel olímpico (AIME &amp; USAMO) con verificación formal Lean4.
+            </p>
+          </section>
+          <!-- Sección de cuerpo 2 -->
+          <section class="space-y-space-md">
+            <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">
+              Eficiencia energética frente a escala bruta
+            </h2>
+            <p class="font-body-base text-body-base text-on-surface-variant leading-relaxed">
+              Hasta hace meses, la suposición predominante en los laboratorios de Silicon Valley era que la capacidad cognitiva requería clusters infinitos de GPU con consumos equivalentes a pequeñas ciudades. La llegada de los esquemas híbridos demuestra que optimizar los árboles de búsqueda deductiva reduce la necesidad de parámetros en hasta un 70%.
+            </p>
+            <!-- Viñetas de funcionalidades con mini contenedores -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm pt-space-xs">
+              <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
+                <div class="w-8 h-8 rounded-lg bg-tertiary-fixed/30 text-tertiary flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[20px]">bolt</span>
+                </div>
+                <h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Consumo -64%</h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Menos inferencias redundantes gracias al descarte temprano de trayectorias ilógicas.</p>
+              </div>
+              <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
+                <div class="w-8 h-8 rounded-lg bg-secondary-fixed/50 text-secondary flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[20px]">memory</span>
+                </div>
+                <h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Compilado Local</h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Capacidad de ejecución en silicio edge sin necesidad constante de enlaces de fibra óptica a centros de datos.</p>
+              </div>
+            </div>
+            <p class="font-body-base text-body-base text-on-surface-variant leading-relaxed pt-space-xs">
+              La transición de la fuerza bruta al razonamiento formal estructurado abre la puerta a asistentes científicos autónomos capaces de diseñar nuevos materiales superconductores, sintetizar medicamentos en horas y validar código crítico para navegación aeroespacial con garantías de cero defectos.
+            </p>
+          </section>
+          <!-- Grupo de etiquetas de tema -->
+          <div class="pt-space-md flex flex-wrap items-center gap-space-xs">
+            <span class="font-caption text-caption text-outline mr-2 font-bold uppercase tracking-wider">Temas:</span>
+            <a class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-caption text-caption transition-colors" href="#">#InteligenciaArtificial</a>
+            <a class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-caption text-caption transition-colors" href="#">#Hardware</a>
+            <a class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-caption text-caption transition-colors" href="#">#Algoritmos</a>
+            <a class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-caption text-caption transition-colors" href="#">#DeepTech</a>
+          </div>
+        </article>
+        <!-- Barra lateral de contexto (columnas 9-12) -->
+        <aside class="lg:col-span-4 space-y-space-lg">
+          <!-- Recuadro de biografía del autor -->
+          <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm">
+            <span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wide">Sobre la redactora</span>
+            <div class="flex items-center gap-space-sm">
+              <img class="w-14 h-14 rounded-full object-cover shadow-sm ring-2 ring-primary/20" data-alt="Close up profile photo of Dr. Elena Ramos, modern technology writer and computer researcher in high-end studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBztUt7yii2llGQSGehavO75vmSqviucG6vfrH00qrRqMepJi0595HaGxVY80CU_2w-k6p-EJYv_TvU40hM56ZAsLkD3JigzkPXDaAukqtpe4AJUGRtFA9I2bXGUHhGZMHKsLWjCt122UDPffuwaiShwIoNCuDldLxC-v8xtT_xm48i2FsRN8y7cz8T9q_Ny8auc24VFV-DhNj76SpbLng6vjoCKciM10kIZvY9Ejh3gFt0KFrM7uFlfA"/>
+              <div>
+                <h4 class="font-label-md text-label-md text-on-surface font-bold">Dra. Elena Ramos</h4>
+                <p class="font-caption text-caption text-on-surface-variant">PhD en Ciencias de la Computación (ETH Zurich)</p>
+              </div>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Investiga arquitecturas neuro-simbólicas y aceleradores de tensores. Colaboradora principal en TechPulso desde 2023.
+            </p>
+            <div class="pt-space-xs flex items-center justify-between text-primary font-label-sm text-label-sm">
+              <a class="hover:underline flex items-center gap-1 font-bold" href="#">
+                <span>Ver 42 artículos publicados</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+          <!-- Noticias destacadas en la barra lateral -->
+          <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+            <div class="flex items-center justify-between">
+              <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">El Pulso del Día</h3>
+              <span class="w-2 h-2 rounded-full bg-error animate-ping">
+              </span>
+            </div>
+            <div class="space-y-space-md">
+              <!-- Puesto 01 -->
+              <a class="flex items-start gap-space-sm group" href="#">
+                <span class="font-headline-lg text-headline-lg text-outline-variant font-bold leading-none select-none group-hover:text-primary transition-colors">01</span>
+                <div class="space-y-0.5">
+                  <span class="font-caption text-caption text-secondary font-semibold uppercase">Microchips</span>
+                  <h5 class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors line-clamp-2">
+                    La litografía de 1.2nm entra en fase de testeo experimental
+                  </h5>
+                  <span class="font-caption text-caption text-outline">Hace 2 horas</span>
+                </div>
+              </a>
+              <!-- Puesto 02 -->
+              <a class="flex items-start gap-space-sm group" href="#">
+                <span class="font-headline-lg text-headline-lg text-outline-variant font-bold leading-none select-none group-hover:text-primary transition-colors">02</span>
+                <div class="space-y-0.5">
+                  <span class="font-caption text-caption text-tertiary font-semibold uppercase">Ciberdefensa</span>
+                  <h5 class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors line-clamp-2">
+                    Criptografía post-cuántica: el estándar que blindará las transacciones
+                  </h5>
+                  <span class="font-caption text-caption text-outline">Hace 4 horas</span>
+                </div>
+              </a>
+              <!-- Puesto 03 -->
+              <a class="flex items-start gap-space-sm group" href="#">
+                <span class="font-headline-lg text-headline-lg text-outline-variant font-bold leading-none select-none group-hover:text-primary transition-colors">03</span>
+                <div class="space-y-0.5">
+                  <span class="font-caption text-caption text-primary font-semibold uppercase">Espacio</span>
+                  <h5 class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors line-clamp-2">
+                    Antenas de matriz en fase y comunicación láser orbital
+                  </h5>
+                  <span class="font-caption text-caption text-outline">Hace 6 horas</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- Mini widget de suscripción rápida -->
+          <div class="bg-primary p-space-md rounded-xl text-on-primary space-y-space-sm shadow-md">
+            <div class="flex items-center gap-space-xs">
+              <span class="material-symbols-outlined text-[20px]">bolt</span>
+              <span class="font-label-sm text-label-sm uppercase tracking-wider font-bold">TechPulso Briefing</span>
+            </div>
+            <h4 class="font-headline-sm text-headline-sm font-bold leading-snug">
+              Recibe análisis riguroso en tu bandeja de entrada
+            </h4>
+            <p class="font-caption text-caption text-primary-fixed leading-relaxed">
+              Sin spam ni titulares sensacionalistas. 1 resumen semanal curado por ingenieros.
+            </p>
+            <div class="space-y-space-xs pt-1">
+              <input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline rounded-lg px-3 py-2 font-body-sm text-body-sm focus:outline-none" placeholder="nombre@correo.com" type="email"/>
+              <button class="w-full py-2 bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-label-md text-label-md rounded-lg font-bold transition-all shadow-sm" type="button">
+                Suscribirme
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <!-- 5. Sección de noticias relacionadas (3 tarjetas recomendadas) -->
+      <section class="mt-space-xl pt-space-lg bg-surface-container-low/50 rounded-2xl p-space-md sm:p-space-lg space-y-space-md">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-xs">
+          <div>
+            <span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Continuar Explorando</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Noticias Relacionadas</h2>
+          </div>
+          <a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:underline font-semibold" routerLink="/noticias">
+            <span>Ver catálogo completo</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </a>
+        </div>
+        <!-- Cuadrícula editorial de 3 tarjetas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+          <!-- Tarjeta relacionada 1 -->
+          <article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+            <div class="relative aspect-[16/10] overflow-hidden bg-surface-container">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Macro view of a shimmering silicon wafer microchip die surrounded by laser refraction patterns and deep blue reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9K1xGEVPDOMUC4oeBXbzQNbSvTuAHRlXYq_sjLSOpyJwcTjipYugv1tmukvfR7WaRkmtTijdhccAVC1zNMMauRHjJrC4GHp21HF6YOXhsXaoPS5epJCZAFye77dKxCqkpVC-sF4PZm2iIQ55GyDJfB-6q7vro70zY9WkqF3Q4N3m4gm4PNpPLRAc7xmO6KmdCxGemt64D1qgbkPFDpeHchBFisFdgYsNFjNCO6GHgHpzS9cZaIIbcyA"/>
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-lowest/90 backdrop-blur-md text-primary font-bold">
+                Semiconductores
+              </span>
+            </div>
+            <div class="p-space-md flex-1 flex flex-col justify-between space-y-space-sm">
+              <div class="space-y-space-xs">
+                <span class="font-caption text-caption text-outline">22 de Octubre, 2025 • 4 min</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors leading-snug">
+                  El avance de empaquetado 3D que salva la Ley de Moore
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                  Nuevas interconexiones verticales microscópicas multiplican la densidad de transistores sin elevar temperaturas críticas.
+                </p>
+              </div>
+              <div class="pt-space-xs flex items-center justify-between">
+                <span class="font-label-sm text-label-sm text-on-surface font-semibold">Marcos Morales</span>
+                <span class="material-symbols-outlined text-[20px] text-outline group-hover:text-primary transition-colors">arrow_outward</span>
+              </div>
+            </div>
+          </article>
+          <!-- Tarjeta relacionada 2 -->
+          <article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+            <div class="relative aspect-[16/10] overflow-hidden bg-surface-container">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High tech server room hallway bathed in cooling cyan and indigo LED illumination with glass server racks and futuristic cable management" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACZlDR0q5TKue-MFLmqyxfpcR3FQGtR-5US6Cy2Yjg38v_GJYv-o52fq4xjC4g81nqoF8dWVEnNqVeUuFUCDF-Ch6Hu-U_Yysn6XjUT1SwQNcNOIcMnkus-rbkUfabE9uEi69mK6fSWsECahPEWH1Cym39tN0doZ9_nV78udcMLXRYKPZypFSHZDpX_pIB_2JkF_2AxP7B8DocK_1B893euRiPE2Uqeb7kIuGoVnhXdnBWmLfHrFoebQ"/>
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-lowest/90 backdrop-blur-md text-tertiary font-bold">
+                Infraestructura
+              </span>
+            </div>
+            <div class="p-space-md flex-1 flex flex-col justify-between space-y-space-sm">
+              <div class="space-y-space-xs">
+                <span class="font-caption text-caption text-outline">19 de Octubre, 2025 • 6 min</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors leading-snug">
+                  Refrigeración por inmersión bifásica: el adiós a los ventiladores
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                  Centros de datos en el norte de Europa logran un PUE récord de 1.03 utilizando fluidos dieléctricos sintéticos.
+                </p>
+              </div>
+              <div class="pt-space-xs flex items-center justify-between">
+                <span class="font-label-sm text-label-sm text-on-surface font-semibold">Lucía Sotomayor</span>
+                <span class="material-symbols-outlined text-[20px] text-outline group-hover:text-primary transition-colors">arrow_outward</span>
+              </div>
+            </div>
+          </article>
+          <!-- Tarjeta relacionada 3 -->
+          <article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+            <div class="relative aspect-[16/10] overflow-hidden bg-surface-container">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Autonomous robotics arm precision-soldering nanoscale printed circuit board under ultra-crisp studio LED lighting with depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjQH5yeML1Vuon9klnlwIQTglEGM2CCJ5uTOPM9cdG5P6c729r__uvMhtA5XykTSgpWDv-upi_jhsDiPIciTjJVB4v-sozLOggf3-x1tor18AN5JUGR0r1FbiwTnwug6Hn3hRkDUmocAtMaS_D50Ne2hnu_uLoNkmpwJ51BY0bqNVvkiseDoIFmqjWXhA8B97nzLinPi97P6rf0MsBp4u7EGz6FFpiFR9X_3gN6JfMg0IC9A9yU4dZuA"/>
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-bold">
+                Robótica
+              </span>
+            </div>
+            <div class="p-space-md flex-1 flex flex-col justify-between space-y-space-sm">
+              <div class="space-y-space-xs">
+                <span class="font-caption text-caption text-outline">16 de Octubre, 2025 • 5 min</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors leading-snug">
+                  Actuadores bio-inspirados y la próxima ola de brazos mecánicos
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                  Polímeros electroactivos consiguen destreza a nivel micrométrico para manufactura aeroespacial automatizada.
+                </p>
+              </div>
+              <div class="pt-space-xs flex items-center justify-between">
+                <span class="font-label-sm text-label-sm text-on-surface font-semibold">Carlos Alarcón</span>
+                <span class="material-symbols-outlined text-[20px] text-outline group-hover:text-primary transition-colors">arrow_outward</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
 </main>

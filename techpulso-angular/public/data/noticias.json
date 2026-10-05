@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "categoria": "tecnologia",
+    "categoriaLabel": "Tecnología",
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuDUBeD_GdXY_6vkbocR18a8aS472RaVbiKuLwYF-rxzQVKK86XlcAD5TMJQnUsBtjQjcVbiT-cm5EIf7F_IQ9z7qostYu7oag-oRgMuKyWNwm9KxzLCLXETDp_a405Ob7S0TXFrMZPshM4CgUPdjGoTAKHkS8aug7Ya8B1b6fK6fNpVqS5O1GzYINqwp3s-9KgeNqSURSGrSfFjhMgrU41mnWVGKtfVEaUguWPuJqhCGW638PAEekMWLQ",
+    "tiempo": "Hace 2 horas",
+    "lectura": "4 min",
+    "titulo": "Arquitecturas RISC-V conquistan los nuevos centros de datos",
+    "descripcion": "La transición masiva hacia arquitecturas de cómputo abiertas reduce dependencias propietarias y catapulta la eficiencia energética en hyperscalers globales.",
+    "autor": "Valeria Ríos",
+    "autorIniciales": "VR"
+  },
+  {
+    "id": 2,
+    "categoria": "educativas",
+    "categoriaLabel": "Educativas",
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuBGVGYgXx4Agsj87UDnO0xlCZGac3GSV-DWbZd6MHAPHt8wfsKnU6yuphaHSs1zZnMapAJAaoA8HS4kujbjNSK5xOxvRs1FInt41pLssfJWrNil-NmadZrtwTC53e36QDgx8X4Iex15PacaHk42LwCyr9lMjPWjJJXJ4AMSIHK1aFkLS3-nFBZCh9TkBOQcKkdCY5O3Xf4l5oCFoSvP75GqFfWutTiG5Ec0v9PBeBbBusJCJU7iQkW9FQ",
+    "tiempo": "Hace 5 horas",
+    "lectura": "6 min",
+    "titulo": "Simuladores de laboratorios en VR para universidades públicas",
+    "descripcion": "Nuevos consorcios académicos despliegan infraestructura inmersiva que democratiza la práctica experimental de química cuántica y física de partículas.",
+    "autor": "Martín Castro",
+    "autorIniciales": "MC"
+  },
+  {
+    "id": 3,
+    "categoria": "turisticas",
+    "categoriaLabel": "Turísticas",
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuDhJvjrxluvl6jnCMwy0C2UpGvOyZlpE-fs1ZEIQJh7J6n1kr2qr7-ArRzNRIgRaId5QvxsgyXpO-nbvKFsidUA7a8lS9yj-YHOv-0p3_LOKlJ57xgw9LB13m2N9ImMgEoi40VRPvMESGqgnis8ahjsxuxSnJQetL2-aP-k4wVagVhsEYQLvkMbhHQ9ZPiII56_aT8RfdcP2OG-NrLpIcvNxMA_YjfyypaSZKaOe9NOB0bZOsrP9LsJpg",
+    "tiempo": "Ayer",
+    "lectura": "5 min",
+    "titulo": "Sistemas de navegación cuántica en aviación comercial",
+    "descripcion": "Aerolíneas intercontinentales prueban brújulas atómicas inmunes a interferencias de GPS, marcando una era de vuelos transoceánicos sin margen de desvío.",
+    "autor": "Elena Lora",
+    "autorIniciales": "EL"
+  },
+  {
+    "id": 4,
+    "categoria": "comerciales",
+    "categoriaLabel": "Comerciales",
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuCAdqEx98K8JSUUzq13mgUuvup74SouEa6_6oQfO1zcxZ4KbI2RtGe38_Ve-_0L8_daJuUhJ2AO0pfm6GraCF0u1-8p8bWMQp6nEusbMoM4oxXbKUEJXdS76P6YD-e8TBOjvHxy7VP4Z8QV5YNLv4z6cnnHps8zeh348JzKNx80Sb_PhKqvHkqHiE1HlQzbBphdWjhfYRBPW0oODKL7TTKcgAXuZzvdyV-YoOt5U05ryDBh3zeXx3BARA",
+    "tiempo": "Hace 1 día",
+    "lectura": "3 min",
+    "titulo": "Plataformas B2B integran liquidaciones instantáneas vía blockchain",
+    "descripcion": "Cadenas logísticas transfronterizas eliminan intermediarios fiduciarios adoptando contratos inteligentes con garantía instantánea en segundos.",
+    "autor": "Diego Fuentes",
+    "autorIniciales": "DF"
+  },
+  {
+    "id": 5,
+    "categoria": "tecnologia",
+    "categoriaLabel": "Tecnología",
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuDz3HJXS9be6hpN9iBUlc21mKjYHs_9BwGLbfmXCSeGh5ktaqjW0zofq-kRmPHXG57W0CkSKMN_a6pyRqfFWlsi55VV53AG1kBCTnZvLWTv8MgrveJjEcT0_v8gkBZkMRNCWwFl4ZyKy4y6ye4mlzLFB0mqycnRzh8P8xDQkjCmfNHDK669XoAMkapvv_nldkLKErCkn21t8J69H6cCcEXLTJyPI7g8ujEJSP79i802UOTFpZDxyjdsnw",
+    "tiempo": "Hace 2 días",
+    "lectura": "7 min",
+    "titulo": "Sensores hápticos de última generación para robótica colaborativa",
+    "descripcion": "La microelectrónica de piel artificial concede a manipuladores autónomos una sensibilidad táctil idéntica a la humana en entornos industriales críticos.",
+    "autor": "Sonia Klein",
+    "autorIniciales": "SK"
+  },
+  {
+    "id": 6,
+    "categoria": "educativas",
+    "categoriaLabel": "Educativas",
+    "imagen": "https://lh3.googleusercontent.com/aida-public/AB6AXuAsa_bRJVaqXt9W6vc0LYfNUcOB5aFn102Ar0n1rtg9ApSRkcgguoqq9VvG81aY56IhmYCrVgucKUR9pAgNhL2w4ffkmfb-0FZ3-rY8E-qKtR0WbpiIADxwKHCQzUrwmgoBjv5TbnOWbbGJ77Cz47QeoIUv9W6LyQekBps99KHZ3fjVfRPN9DZ4unZlLwOASAyGtT-WkskXJi_tT6YbVkX0lRvdleYh1s1YJ_dG9ixpLs644cjPHUZYmw",
+    "tiempo": "Hace 3 días",
+    "lectura": "4 min",
+    "titulo": "Bootcamps de ciberseguridad con entornos sandbox automatizados",
+    "descripcion": "Plataformas de entrenamiento inyectan escenarios reales de ataque en vivo, acelerando la titulación práctica de analistas defensivos de redes.",
+    "autor": "Rafael Navarro",
+    "autorIniciales": "RN"
+  }
+]

@@ -5,9 +5,12 @@
   Encabezado compartido por todas las vistas. Aquí están los datos del menú
   de navegación: header.html recorre la lista "enlaces" y dibuja un enlace
   por cada elemento, marcando con el subrayado azul el de la vista abierta.
+  También entrega la cantidad de favoritos que muestra junto al ícono de
+  marcador.
 */
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { FavoritosService } from '../favoritos.service';
 
 // Forma de cada elemento del menú.
 interface EnlaceMenu {
@@ -20,6 +23,9 @@ interface EnlaceMenu {
   exacta: boolean;
   // false: nunca se marca como activo (se usa en "Categorías").
   marcable: boolean;
+  // Sección de la vista a la que baja el enlace (opcional). Con "categorias"
+  // la dirección queda /noticias#categorias.
+  fragmento?: string;
 }
 
 @Component({
@@ -35,6 +41,12 @@ interface EnlaceMenu {
   templateUrl: './header.html',
 })
 export class Header {
+  // Servicio que guarda los favoritos del usuario.
+  private readonly favoritos = inject(FavoritosService);
+
+  // Cantidad de noticias guardadas en favoritos (se actualiza sola).
+  protected readonly cantidad = this.favoritos.cantidad;
+
   // Clases de Tailwind de un enlace del menú cuando su vista está abierta
   // (subrayado azul). Son las mismas del diseño de la Entrega 2.
   protected readonly claseActivo =
@@ -49,7 +61,7 @@ export class Header {
     { texto: 'Inicio', ruta: '/', exacta: true, marcable: true },
     { texto: 'Noticias', ruta: '/noticias', exacta: false, marcable: true },
     { texto: 'Favoritos', ruta: '/favoritos', exacta: false, marcable: true },
-    { texto: 'Categorías', ruta: '/noticias', exacta: false, marcable: false },
+    { texto: 'Categorías', ruta: '/noticias', fragmento: 'categorias', exacta: false, marcable: false },
     { texto: 'Contacto', ruta: '/contacto', exacta: false, marcable: true },
   ];
 }

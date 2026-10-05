@@ -1,15 +1,191 @@
 <!--
   TechPulso - favoritos.html (vista de Favoritos)
+  Politécnico Gran Colombiano - Módulo Front-End - Grupo B02 / Subgrupo 26
 
-  CONTENIDO TEMPORAL: sirve para comprobar que el router muestra esta vista
-  entre el header y el footer. Después se reemplaza por el contenido real
-  de favoritos.html de la Entrega 2.
+  Muestra las noticias que el usuario guardó. Los datos vienen del servicio
+  de favoritos (favoritos.service.ts), que las guarda en localStorage.
 
-  El espacio superior pt-20 (5rem) evita que el header fijo tape el
-  contenido.
+  Notas:
+  - Con favoritos guardados se muestra la lista de tarjetas (bloque for, una
+    tarjeta por cada favorito). Si no hay ninguno, el bloque if muestra el
+    estado vacío.
+  - Las dobles llaves muestran en pantalla un dato de favoritos.ts. Los
+    corchetes ([src], [alt], [class]) asignan atributos con datos, y los
+    paréntesis ((click)) ejecutan un método al hacer clic.
+  - En la Entrega 2 esta vista tenía botones de demostración ("Guardados
+    Activos", "Vista Vacía", "Restaurar artículos" y "Volver a ver
+    tarjetas"). Ya no existen: la vista vacía aparece sola cuando no hay
+    favoritos.
+  - "Leer artículo" lleva a la vista de Detalle (dirección fija /detalle).
+  - El espacio superior pt-20 evita que el header fijo tape el contenido.
+  - Las imágenes vienen de enlaces externos de Google. Si alguno deja de
+    funcionar, hay que guardar la imagen dentro de public/.
 -->
-<main class="pt-20 min-h-screen bg-background">
-  <p class="p-margin text-on-surface font-body-base text-body-base">
-    Vista de Favoritos (favoritos funciona)
-  </p>
+
+<main class="w-full pt-20 bg-background min-h-screen">
+  <div class="flex flex-col w-full">
+    <div class="max-w-[1320px] mx-auto w-full px-margin lg:px-margin-lg py-space-xl">
+      <!-- Encabezado editorial y barra de métricas -->
+      <div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-lg lg:p-margin-lg mb-space-xl shadow-sm">
+        <div class="absolute -right-20 -top-24 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none">
+        </div>
+        <div class="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+          <div class="max-w-2xl space-y-space-sm">
+            <div class="inline-flex items-center gap-space-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm uppercase tracking-wider">
+              <span class="material-symbols-outlined text-[16px]">bookmarks</span>
+              <span>Espacio de Lectura Personal</span>
+            </div>
+            <h1 class="font-headline-xl text-headline-xl text-on-surface font-extrabold tracking-tight">
+              Tus Noticias Guardadas
+            </h1>
+            <p class="font-body-lead text-body-lead text-on-surface-variant leading-relaxed">
+              Gestiona tu colección personal de artículos y lecturas pendientes para consultar cuando quieras.
+            </p>
+          </div>
+          <!-- Estadísticas rápidas: cantidad de favoritos -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
+            <div class="flex items-center gap-space-sm bg-surface-container-lowest px-4 py-3 rounded-lg shadow-sm">
+              <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">
+                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+              </div>
+              <div>
+                <p class="font-caption text-caption text-outline">Colección Actual</p>
+                <p class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ cantidad() }} <span class="font-label-md text-label-md text-on-surface-variant font-normal">{{ palabraArticulos() }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Franja de estado debajo del encabezado -->
+        <div class="mt-space-lg pt-space-md border-t border-outline-variant/20 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant">
+          <div class="flex items-center gap-space-xs">
+            <span class="inline-block w-2 h-2 rounded-full bg-tertiary-container animate-pulse">
+            </span>
+            <span class="font-semibold text-on-surface">{{ textoEstado() }}</span>
+            <span class="hidden sm:inline text-outline">•</span>
+            <span class="hidden sm:inline">Sincronizado con tu perfil local</span>
+          </div>
+          <div class="flex items-center gap-space-md font-caption text-caption">
+            <span class="flex items-center gap-1 text-outline">
+              <span class="material-symbols-outlined text-[14px]">schedule</span> {{ minutosTotales() }} min de lectura total</span>
+            <span class="flex items-center gap-1 text-outline">
+              <span class="material-symbols-outlined text-[14px]">cloud_done</span> Almacenamiento seguro</span>
+          </div>
+        </div>
+      </div>
+      @if (cantidad() > 0) {
+        <!-- Lista de favoritos guardados -->
+        <div class="space-y-space-lg transition-all duration-300">
+          <div class="flex items-center justify-between">
+            <h2 class="font-headline-md text-headline-md text-on-surface font-bold flex items-center gap-space-xs">
+              <span>Artículos Listos para Leer</span>
+              <span class="text-caption font-label-sm uppercase tracking-wide bg-surface-container text-on-surface-variant px-2.5 py-0.5 rounded-full">Recientes</span>
+            </h2>
+          </div>
+          <!-- Cuadrícula de tarjetas -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter-lg">
+            @for (favorito of favoritos(); track favorito.noticia.id) {
+              <!-- Tarjeta de favorito: se dibuja una por cada noticia guardada -->
+              <article class="group relative flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200">
+                <div class="relative h-56 w-full overflow-hidden bg-surface-container">
+                  <img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" [alt]="favorito.noticia.titulo" [src]="favorito.noticia.imagen"/>
+                  <div class="absolute top-3 left-3">
+                    <span [class]="claseEtiqueta(favorito.noticia.categoria)">{{ favorito.noticia.categoriaLabel }}</span>
+                  </div>
+                  <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-inverse-surface/80 backdrop-blur-sm text-surface-container-lowest font-caption text-caption flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]">auto_stories</span>
+                    <span>{{ favorito.noticia.lectura }}</span>
+                  </div>
+                </div>
+                <div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+                  <div class="space-y-space-xs">
+                    <div class="flex items-center gap-1.5 font-caption text-caption text-outline">
+                      <span class="material-symbols-outlined text-[15px]">schedule</span>
+                      <span>Guardado {{ haceCuanto(favorito.guardadoEn) }}</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors leading-snug">{{ favorito.noticia.titulo }}</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 leading-relaxed">{{ favorito.noticia.descripcion }}</p>
+                  </div>
+                  <!-- Acciones de la tarjeta: leer el artículo o quitarlo de favoritos -->
+                  <div class="pt-space-md mt-auto border-t border-outline-variant/20 flex items-center justify-between gap-space-sm">
+                    <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-bold hover:gap-2 transition-all" routerLink="/detalle">
+                      <span>Leer artículo</span>
+                      <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </a>
+                    <button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-error hover:text-on-error text-on-surface-variant font-label-md text-label-md transition-all duration-150 active:scale-95 group/btn" (click)="quitar(favorito.noticia.id)" title="Quitar de favoritos">
+                      <span class="material-symbols-outlined text-[16px] text-error group-hover/btn:text-on-error transition-colors">close</span>
+                      <span>Quitar</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            }
+          </div>
+        </div>
+      } @else {
+        <!-- Estado vacío: se muestra cuando no hay favoritos guardados -->
+        <div class="flex flex-col items-center justify-center p-space-xl lg:p-margin-lg bg-surface-container-lowest rounded-xl shadow-sm text-center max-w-3xl mx-auto my-space-lg">
+          <!-- Ilustración del estado vacío -->
+          <div class="relative w-28 h-28 mb-space-md flex items-center justify-center">
+            <div class="absolute inset-0 rounded-full bg-primary/5 animate-pulse">
+            </div>
+            <div class="relative w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary shadow-inner">
+              <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z">
+                </path>
+                <line x1="12" x2="12" y1="7" y2="13">
+                </line>
+                <line x1="9" x2="15" y1="10" y2="10">
+                </line>
+              </svg>
+            </div>
+            <span class="material-symbols-outlined absolute -top-1 -right-1 text-secondary-container bg-surface-container-lowest rounded-full p-1 shadow-sm text-[20px]">
+              stars
+            </span>
+          </div>
+          <div class="max-w-md space-y-space-xs mb-space-lg">
+            <h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+              Aún no tienes favoritos
+            </h3>
+            <p class="font-body-base text-body-base text-on-surface-variant leading-relaxed">
+              Explora nuestro catálogo de noticias y haz clic en el icono de corazón o "Agregar a favoritos" para guardar artículos aquí.
+            </p>
+          </div>
+          <!-- Botón de llamado a la acción -->
+          <div class="flex flex-col sm:flex-row items-center gap-space-sm w-full sm:w-auto">
+            <a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-lg transition-all duration-150 shadow-[0_4px_14px_0_rgba(37,99,235,0.35)] active:scale-95" routerLink="/noticias">
+              <span class="material-symbols-outlined text-[20px]">explore</span>
+              <span>Explorar catálogo de noticias</span>
+            </a>
+          </div>
+          <!-- Franja informativa -->
+          <div class="mt-space-xl pt-space-md border-t border-outline-variant/20 w-full flex flex-wrap items-center justify-center gap-gutter text-outline font-caption text-caption">
+            <span class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-[15px]">offline_pin</span> Lectura sin conexión disponible</span>
+            <span class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-[15px]">notifications_active</span> Alertas de actualización</span>
+            <span class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-[15px]">devices</span> Sincronizado en móvil y web</span>
+          </div>
+        </div>
+      }
+      <!-- Tarjeta complementaria: resumen semanal -->
+      <div class="mt-space-xl p-space-lg rounded-xl bg-gradient-to-r from-surface-container-high to-surface-container-low flex flex-col md:flex-row items-center justify-between gap-space-lg">
+        <div class="flex items-center gap-space-md">
+          <div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-md">
+            <span class="material-symbols-outlined text-[24px]">forward_to_inbox</span>
+          </div>
+          <div>
+            <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">¿Deseas recibir un resumen semanal de tus lecturas?</h4>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Enviamos cada domingo un compilado con análisis contextualizado de tus artículos guardados.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-space-sm w-full md:w-auto shrink-0">
+          <button class="w-full md:w-auto px-5 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-bright font-label-md text-label-md font-bold transition-colors shadow-sm">
+            Configurar resumen
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>

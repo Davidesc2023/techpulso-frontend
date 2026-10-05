@@ -12,15 +12,17 @@
   - El menú se dibuja con un bloque for que recorre la lista "enlaces" de
     header.ts. El enlace de la vista abierta se marca con el subrayado
     azul gracias a routerLinkActive, que avisa cuándo está activo.
-  - "Categorías" lleva al catálogo, igual que "Noticias", pero nunca se
-    marca como activo para que no se subrayen dos enlaces a la vez.
+  - "Categorías" lleva al catálogo y baja directo al buscador y los filtros
+    por categoría (dirección /noticias#categorias). Nunca se marca como
+    activo, para que no se subrayen dos enlaces a la vez.
   - En la vista de Detalle no se subraya ningún ítem del menú.
   - El logo se carga desde public/logo-techpulso.png. Antes apuntaba a un
     enlace externo de Google que dejó de funcionar (error 403 Forbidden).
   - El encabezado es fijo (position fixed) y mide 5rem de alto (h-20), por
     eso cada vista necesita un espacio superior de esa altura (pt-20).
-  - El número 3 junto al ícono de favoritos es fijo por ahora. Más adelante
-    mostrará la cantidad real de noticias guardadas.
+  - El número junto al ícono de favoritos es la cantidad real de noticias
+    guardadas (viene del servicio de favoritos) y se oculta cuando no hay
+    ninguna.
   - El buscador y el ícono de usuario son solo visuales, sin funcionalidad.
 -->
 
@@ -39,12 +41,13 @@
 <nav class="hidden lg:flex items-center gap-gutter" data-active-classes="text-primary font-bold border-b-2 border-primary pb-1">
 @for (enlace of enlaces; track enlace.texto) {
 <!--
-  [routerLink]: dirección a la que lleva el enlace.
+  [routerLink]: dirección a la que lleva el enlace. [fragment]: sección de esa vista a la que baja (solo "Categorías" la tiene).
   routerLinkActive y #activo: permiten saber si este enlace corresponde a la vista abierta (activo.isActive).
   [class]: si está activo usa el estilo subrayado azul, si no el estilo normal.
 -->
 <a
 [routerLink]="enlace.ruta"
+[fragment]="enlace.fragmento"
 routerLinkActive
 #activo="routerLinkActive"
 [routerLinkActiveOptions]="{ exact: enlace.exacta }"
@@ -64,10 +67,12 @@ routerLinkActive
 <span class="absolute right-3 top-1/2 -translate-y-1/2 font-caption text-caption text-outline">⌘K</span>
 </div>
 
-<!-- Acceso a favoritos con el contador de noticias guardadas -->
+<!-- Acceso a favoritos con el contador de noticias guardadas (el número se oculta si no hay ninguna) -->
 <a class="relative flex items-center justify-center p-2 rounded-full hover:bg-surface-container hover:text-on-surface text-on-surface-variant transition-colors" data-path="favoritos" routerLink="/favoritos" title="Mis Favoritos">
 <span class="material-symbols-outlined text-[22px]">bookmark</span>
-<span class="absolute -top-1 -right-1 bg-primary text-on-primary font-label-sm text-label-sm w-5 h-5 rounded-full flex items-center justify-center ring-2 ring-surface-container-lowest font-bold">3</span>
+@if (cantidad() > 0) {
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary font-label-sm text-label-sm w-5 h-5 rounded-full flex items-center justify-center ring-2 ring-surface-container-lowest font-bold">{{ cantidad() }}</span>
+}
 </a>
 
 <!-- Botón "Publicar Noticia": lleva al catálogo, donde está el formulario de creación (mini CRUD) -->

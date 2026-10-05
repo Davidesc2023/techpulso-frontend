@@ -14,12 +14,15 @@
     Entrega 2. Ahora usan eventos de Angular, (click) y (submit), que
     llaman a los métodos alternarFavorito() y suscribirse() de home.ts.
   - Los enlaces #catalogo y #por-que llevan a secciones de esta misma
-    página. Los enlaces con # solo son marcadores: los destinos reales
-    (detalle de noticia, etc.) se conectan con el router más adelante.
+    página. "Ver más" y "Leer informe completo" llevan a la vista de
+    Detalle (routerLink, dirección fija /detalle).
   - Las imágenes se cargan de enlaces externos de Google. Si alguno deja
     de funcionar, hay que guardar la imagen dentro de public/ y cambiar
     el src, como se hizo con el logo.
   - El espacio superior pt-20 evita que el header fijo tape el contenido.
+  - En los SVG el atributo se escribe viewBox con la B mayúscula: Angular
+    distingue mayúsculas y minúsculas en los atributos y, escrito en
+    minúscula, el navegador lo ignora y el dibujo sale mal.
 -->
 
 <main class="w-full pt-20 bg-background min-h-screen">
@@ -120,7 +123,7 @@
                 </p>
                 <!-- Pie de tarjeta con favorito y acción -->
                 <div class="pt-space-sm flex items-center justify-between">
-                  <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold hover:gap-2 transition-all" href="#">
+                  <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold hover:gap-2 transition-all" routerLink="/detalle">
                     <span>Leer informe completo</span>
                     <span class="material-symbols-outlined text-[18px]">chevron_right</span>
                   </a>
@@ -195,7 +198,7 @@
               </p>
             </div>
             <div class="pt-space-md mt-space-sm flex items-center justify-between">
-              <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold group-hover:gap-1.5 transition-all" href="#">
+              <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold group-hover:gap-1.5 transition-all" routerLink="/detalle">
                 <span>Ver más</span>
                 <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
               </a>
@@ -227,7 +230,7 @@
               </p>
             </div>
             <div class="pt-space-md mt-space-sm flex items-center justify-between">
-              <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold group-hover:gap-1.5 transition-all" href="#">
+              <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold group-hover:gap-1.5 transition-all" routerLink="/detalle">
                 <span>Ver más</span>
                 <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
               </a>
@@ -259,7 +262,7 @@
               </p>
             </div>
             <div class="pt-space-md mt-space-sm flex items-center justify-between">
-              <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold group-hover:gap-1.5 transition-all" href="#">
+              <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold group-hover:gap-1.5 transition-all" routerLink="/detalle">
                 <span>Ver más</span>
                 <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
               </a>
@@ -291,7 +294,7 @@
               </p>
             </div>
             <div class="pt-space-md mt-space-sm flex items-center justify-between">
-              <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold group-hover:gap-1.5 transition-all" href="#">
+              <a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold group-hover:gap-1.5 transition-all" routerLink="/detalle">
                 <span>Ver más</span>
                 <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
               </a>
@@ -338,7 +341,7 @@
             </div>
             <!-- Mini gráfico SVG de métrica -->
             <div class="pt-space-md mt-space-md flex items-center gap-space-sm bg-surface-container-low p-space-sm rounded-xl">
-              <svg class="w-10 h-10 text-secondary shrink-0" viewbox="0 0 36 36">
+              <svg class="w-10 h-10 text-secondary shrink-0" viewBox="0 0 36 36">
                 <path class="text-outline-variant/30" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5">
                 </path>
                 <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="94, 100" stroke-linecap="round" stroke-width="3.5">
@@ -372,7 +375,7 @@
                 <span class="font-label-sm text-label-sm font-bold text-on-surface">&lt; 90 seg latencia</span>
                 <span class="font-caption text-caption text-outline">Ticker mundial activo</span>
               </div>
-              <svg class="w-20 h-7 text-primary-container" fill="none" viewbox="0 0 100 30">
+              <svg class="w-20 h-7 text-primary-container" fill="none" viewBox="0 0 100 30">
                 <path d="M0 25 L15 22 L30 27 L45 10 L60 18 L75 5 L90 12 L100 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
                 </path>
               </svg>

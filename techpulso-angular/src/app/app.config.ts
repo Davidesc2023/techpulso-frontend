@@ -3,9 +3,9 @@
   Politécnico Gran Colombiano - Módulo Front-End - Grupo B02 / Subgrupo 26
 
   Aquí se activan las funciones que toda la aplicación necesita. Cada una
-  se registra en la lista "providers". Más adelante se agregará aquí
-  provideHttpClient(), que permitirá leer el archivo noticias.json.
+  se registra en la lista "providers".
 */
+import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
@@ -29,5 +29,8 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
       }),
     ),
+    // Permite leer datos por internet con HttpClient. Lo usa el servicio de
+    // noticias para leer el archivo public/data/noticias.json.
+    provideHttpClient(),
   ],
 };

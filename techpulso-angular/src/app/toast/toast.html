@@ -1,0 +1,27 @@
+<!--
+  TechPulso - toast.html (aviso flotante)
+
+  Aparece abajo a la derecha. Cuando está escondido se desplaza hacia abajo
+  y se vuelve transparente; al mostrarse sube y se ve. Los atributos entre
+  corchetes cambian según el estado del servicio de avisos.
+
+  Importante: translate-y-20 y opacity-0 están fijos en la etiqueta para que
+  el aviso nazca escondido. Si solo los pusieran los corchetes, el aviso se
+  vería un instante al abrir la aplicación, hasta que Angular los aplicara.
+-->
+<div
+  class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-space-sm bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-lg shadow-xl font-label-md text-label-md"
+  [class.translate-y-20]="!toast.visible()"
+  [class.opacity-0]="!toast.visible()"
+  [class.translate-y-0]="toast.visible()"
+  [class.opacity-100]="toast.visible()"
+  role="status"
+  aria-live="polite"
+>
+  <span
+    class="material-symbols-outlined text-[20px]"
+    [class.text-error]="toast.esError()"
+    [class.text-tertiary-fixed]="!toast.esError()"
+  >{{ toast.icono() }}</span>
+  <span>{{ toast.mensaje() }}</span>
+</div>

@@ -1,15 +1,259 @@
 <!--
   TechPulso - contacto.html (vista de Contacto)
+  Politécnico Gran Colombiano - Módulo Front-End - Grupo B02 / Subgrupo 26
 
-  CONTENIDO TEMPORAL: sirve para comprobar que el router muestra esta vista
-  entre el header y el footer. Después se reemplaza por el contenido real
-  de contacto.html de la Entrega 2.
+  Formulario para escribirle al medio, con validaciones, más los datos de
+  contacto, las redes y el mapa de ubicación. Las reglas del formulario y
+  la lógica están en contacto.ts.
 
-  El espacio superior pt-20 (5rem) evita que el header fijo tape el
-  contenido.
+  Notas:
+  - Es un formulario reactivo: [formGroup] lo conecta con el formulario de
+    contacto.ts y formControlName conecta cada campo con su regla.
+  - Validaciones: todos los campos son obligatorios, el nombre necesita al
+    menos 3 letras, el correo debe tener formato válido (algo@algo.algo) y
+    hay que aceptar la política de privacidad. Cada campo muestra su error
+    cuando se toca y queda mal, y las insignias "Válido" aparecen cuando
+    el campo está correcto.
+  - El mensaje admite hasta 1000 caracteres y el contador se pone rojo al
+    acercarse al límite.
+  - Al enviar bien el formulario aparece el aviso verde de confirmación.
+    Todavía no se manda a ningún servidor.
+  - El correo se escribe con &#64; en lugar de la arroba, porque en las
+    plantillas de Angular la arroba se interpreta como el inicio de un
+    bloque de control.
+  - La sede es Bogotá, Colombia (en el diseño original era Madrid). El
+    horario usa la hora de Colombia (COT).
+  - Los enlaces con # (redes sociales) son marcadores sin destino todavía.
+  - El espacio superior pt-20 evita que el header fijo tape el contenido.
 -->
-<main class="pt-20 min-h-screen bg-background">
-  <p class="p-margin text-on-surface font-body-base text-body-base">
-    Vista de Contacto (contacto funciona)
-  </p>
+
+<main class="w-full pt-20 bg-background min-h-screen">
+  <div class="flex flex-col w-full">
+    <div class="relative w-full overflow-hidden">
+      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[340px] bg-gradient-to-tr from-primary/10 via-secondary-container/20 to-transparent blur-3xl pointer-events-none rounded-full">
+      </div>
+      <!-- Encabezado de la página -->
+      <section class="max-w-[1320px] mx-auto px-margin lg:px-margin-lg pt-12 pb-8 w-full relative z-10">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-fixed/60 text-on-primary-fixed font-label-sm text-label-sm mb-4 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse">
+            </span>
+            <span>Canal de Comunicación Directa</span>
+          </div>
+          <h1 class="font-headline-xl text-headline-xl text-on-surface font-extrabold tracking-tight mb-4 text-[#00174b]">
+            Ponte en Contacto con TechPulso
+          </h1>
+          <p class="font-body-lead text-body-lead text-on-surface-variant max-w-2xl leading-relaxed">
+            ¿Tienes una primicia tecnológica, deseas anunciar tu producto o necesitas soporte? Escríbenos y te responderemos en menos de 24 horas.
+          </p>
+        </div>
+      </section>
+      <section class="max-w-[1320px] mx-auto px-margin lg:px-margin-lg pb-space-xl w-full relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-7 bg-surface-container-lowest p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl flex flex-col relative">
+            <!-- Aviso de envío exitoso: aparece cuando el formulario se envía bien -->
+            @if (enviado()) {
+              <div class="mb-6 p-4 rounded-xl bg-tertiary text-on-tertiary shadow-md transition-all duration-300" id="mensaje-enviado">
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-[24px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  <div class="flex flex-col">
+                    <span class="font-headline-sm text-headline-sm font-bold">¡Mensaje enviado con éxito!</span>
+                    <span class="font-body-sm text-body-sm text-on-tertiary-container">Nos pondremos en contacto contigo a la brevedad.</span>
+                  </div>
+                </div>
+              </div>
+            }
+            <!-- Formulario reactivo: sus campos y reglas están en contacto.ts. Al enviarlo se ejecuta enviar() -->
+            <form class="space-y-6" [formGroup]="formulario" (ngSubmit)="enviar()">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1" for="fullName">
+                    Nombre completo <span class="text-error">*</span>
+                  </label>
+                  @if (valido('nombre')) {
+                    <span class="flex items-center gap-1 text-tertiary font-caption text-caption">
+                      <span class="material-symbols-outlined text-[16px]">check_circle</span> Válido
+                    </span>
+                  }
+                </div>
+                <div class="relative">
+                  <input class="w-full bg-surface-container-low rounded-xl px-4 py-3.5 font-body-base text-body-base text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest shadow-sm transition-all pr-10" id="fullName" formControlName="nombre" placeholder="Ej. Martín De la Torre" type="text"/>
+                  <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-[20px] transition-colors" [class.text-outline]="!valido('nombre')" [class.text-tertiary]="valido('nombre')">badge</span>
+                </div>
+                @if (mostrarError('nombre')) {
+                  <p class="mt-1.5 font-caption text-caption text-error">{{ mensajeError('nombre') }}</p>
+                }
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1" for="emailAddress">
+                    Correo electrónico <span class="text-error">*</span>
+                  </label>
+                  @if (valido('correo')) {
+                    <span class="flex items-center gap-1 text-tertiary font-caption text-caption">
+                      <span class="material-symbols-outlined text-[16px]">verified</span> Formato correcto
+                    </span>
+                  }
+                </div>
+                <div class="relative">
+                  <input class="w-full bg-surface-container-low rounded-xl px-4 py-3.5 font-body-base text-body-base text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest shadow-sm transition-all pr-10" id="emailAddress" formControlName="correo" placeholder="correo@ejemplo.com" type="email"/>
+                  <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-[20px] transition-colors" [class.text-outline]="!valido('correo')" [class.text-tertiary]="valido('correo')">mail</span>
+                </div>
+                @if (mostrarError('correo')) {
+                  <p class="mt-1.5 font-caption text-caption text-error">{{ mensajeError('correo') }}</p>
+                }
+              </div>
+              <div>
+                <label class="block font-label-md text-label-md text-on-surface font-semibold mb-2" for="subjectSelect">
+                  Asunto del Mensaje <span class="text-error">*</span>
+                </label>
+                <div class="relative">
+                  <select class="w-full appearance-none bg-surface-container-low rounded-xl px-4 py-3.5 font-body-base text-body-base text-on-surface focus:outline-none focus:bg-surface-container-lowest shadow-sm transition-all cursor-pointer pr-10" id="subjectSelect" formControlName="asunto">
+                    <option disabled="" value="">Selecciona un asunto...</option>
+                    <option value="primicia">Primicia / Noticia</option>
+                    <option value="publicidad">Publicidad comercial</option>
+                    <option value="educativa">Petición educativa</option>
+                    <option value="soporte">Soporte general</option>
+                  </select>
+                  <span class="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[22px]">expand_more</span>
+                </div>
+                @if (mostrarError('asunto')) {
+                  <p class="mt-1.5 font-caption text-caption text-error">{{ mensajeError('asunto') }}</p>
+                }
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1" for="messageText">
+                    Mensaje <span class="text-error">*</span>
+                  </label>
+                  <span class="font-caption text-caption" [class.text-error]="longitudMensaje() >= 950" [class.text-outline]="longitudMensaje() < 950">{{ longitudMensaje() }} / 1000</span>
+                </div>
+                <textarea class="w-full bg-surface-container-low rounded-xl p-4 font-body-base text-body-base text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest shadow-sm transition-all resize-y" id="messageText" formControlName="mensaje" maxlength="1000" placeholder="Describe tu propuesta, consulta o primicia con el mayor detalle posible..." rows="5">
+                </textarea>
+                @if (mostrarError('mensaje')) {
+                  <p class="mt-1.5 font-caption text-caption text-error">{{ mensajeError('mensaje') }}</p>
+                }
+              </div>
+              <div class="flex items-start gap-3 pt-2">
+                <div class="flex items-center h-5 mt-0.5">
+                  <input class="w-4 h-4 rounded bg-surface-container-low text-primary-container focus:ring-0 cursor-pointer accent-primary-container" id="privacyPolicy" formControlName="privacidad" type="checkbox"/>
+                </div>
+                <label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer select-none" for="privacyPolicy">
+                  Acepto la <span class="text-primary font-semibold hover:underline">política de privacidad</span> de datos de TechPulso y autorizo el tratamiento informativo de mi solicitud.
+                </label>
+              </div>
+              @if (mostrarError('privacidad')) {
+                <p class="mt-1.5 font-caption text-caption text-error">{{ mensajeError('privacidad') }}</p>
+              }
+              <div class="pt-3">
+                <button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-8 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-[0.98] cursor-pointer" type="submit">
+                  <span>Enviar Mensaje</span>
+                  <span class="material-symbols-outlined text-[20px]">send</span>
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- Columna derecha: datos de contacto, redes y mapa de ubicación -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+            <div class="bg-surface-container-lowest p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+                  <span class="material-symbols-outlined text-[24px]">newspaper</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Redacción Central</h3>
+                  <p class="font-caption text-caption text-on-surface-variant">Sede editorial y corresponsalía</p>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+                  <span class="material-symbols-outlined text-primary text-[22px] mt-0.5">apartment</span>
+                  <div>
+                    <div class="font-label-md text-label-md text-on-surface font-semibold">Dirección física</div>
+                    <div class="font-body-sm text-body-sm text-on-surface-variant">TechPulso Media Hub, Calle 100 # 9A-45, Bogotá, Colombia</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+                  <span class="material-symbols-outlined text-primary text-[22px] mt-0.5">alternate_email</span>
+                  <div>
+                    <div class="font-label-md text-label-md text-on-surface font-semibold">Correo editorial</div>
+                    <a class="font-body-sm text-body-sm text-primary font-medium hover:underline" href="mailto:redaccion@techpulso.com">redaccion&#64;techpulso.com</a>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+                  <span class="material-symbols-outlined text-primary text-[22px] mt-0.5">call</span>
+                  <div>
+                    <div class="font-label-md text-label-md text-on-surface font-semibold">Teléfono de atención</div>
+                    <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="tel:+576017453210">+57 601 745 3210</a>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+                  <span class="material-symbols-outlined text-primary text-[22px] mt-0.5">schedule</span>
+                  <div>
+                    <div class="font-label-md text-label-md text-on-surface font-semibold">Horario de atención</div>
+                    <div class="font-body-sm text-body-sm text-on-surface-variant">Lunes a Viernes de 09:00 a 19:00 COT</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-6 pt-5">
+                <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline block mb-3 font-bold">Redes &amp; Comunidad Tech</span>
+                <div class="grid grid-cols-2 gap-2.5">
+                  <a class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-all font-label-md text-label-md shadow-sm group" href="#">
+                    <span class="material-symbols-outlined text-[18px] text-outline group-hover:text-on-primary transition-colors">tag</span>
+                    <span>X (Twitter)</span>
+                  </a>
+                  <a class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-all font-label-md text-label-md shadow-sm group" href="#">
+                    <span class="material-symbols-outlined text-[18px] text-outline group-hover:text-on-primary transition-colors">work</span>
+                    <span>LinkedIn</span>
+                  </a>
+                  <a class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-all font-label-md text-label-md shadow-sm group" href="#">
+                    <span class="material-symbols-outlined text-[18px] text-outline group-hover:text-on-primary transition-colors">send</span>
+                    <span>Telegram Tech</span>
+                  </a>
+                  <a class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface transition-all font-label-md text-label-md shadow-sm group" href="#">
+                    <span class="material-symbols-outlined text-[18px] text-outline group-hover:text-on-primary transition-colors">smart_display</span>
+                    <span>YouTube</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="bg-surface-container-lowest p-4 rounded-2xl shadow-xl flex flex-col">
+              <div class="flex items-center justify-between mb-3 px-2">
+                <span class="font-label-md text-label-md font-bold text-on-surface flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary text-[20px]">pin_drop</span>
+                  Ubicación TechPulso Hub
+                </span>
+                <span class="font-caption text-caption text-outline">Bogotá, CO</span>
+              </div>
+              <!-- Mapa de ubicación (imagen de fondo con un marcador encima) -->
+              <div class="relative w-full h-56 rounded-xl overflow-hidden shadow-inner bg-surface-container">
+                <div class="w-full h-full bg-cover bg-center" data-location="Calle 100 # 9A-45, Bogotá, Colombia" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0Bmjqtag9GWOSHkHuN1rPPCAgrwPe4j6A5bvAdGhlUoDD0bMQCpBRV_ebjhp8sX3BPDjchOcumJjicPy1Ncnxf5AGM4W-eX6XjL5R862ptjcWF179p9_u2YS3DGKBHesCVxCGPKX37e4HQztUB_r-zq4T_pMVq7Da9Yue37uhM2vjzaHsel9UXhmOmSB31LALaojPZWFg7QbacqB29EG9D091gbeMl9UUI0NlDoZi_HzVzKm74Fej4g');">
+                </div>
+                <div class="absolute inset-0 bg-primary/10 pointer-events-none mix-blend-multiply">
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                  <div class="relative flex items-center justify-center">
+                    <div class="w-12 h-12 bg-primary-container/30 rounded-full animate-ping absolute">
+                    </div>
+                    <div class="w-10 h-10 bg-primary-container text-on-primary rounded-full flex items-center justify-center shadow-xl relative z-10">
+                      <span class="material-symbols-outlined text-[22px]">corporate_fare</span>
+                    </div>
+                  </div>
+                  <div class="mt-2 bg-on-surface/90 text-surface-bright backdrop-blur-md px-2.5 py-1 rounded-md shadow-lg flex items-center gap-1 font-caption text-caption font-semibold">
+                    <span>Calle 100</span>
+                  </div>
+                </div>
+                <div class="absolute bottom-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
+                  <span class="font-caption text-caption text-on-surface font-semibold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse">
+                    </span> Abierto a colaboradores
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </main>

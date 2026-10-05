@@ -2,9 +2,9 @@
   TechPulso - app.html (plantilla del componente raíz)
 
   Estructura de toda la aplicación, de arriba hacia abajo:
-  encabezado, contenido de la vista actual y pie de página.
-  El contenido lo dibuja el router en <router-outlet />; todavía no hay
-  vistas, por eso solo se ven el encabezado y el pie.
+  encabezado, contenido de la vista actual y pie de página. El aviso
+  flotante (app-toast) está fijo en una esquina, así que su lugar en la
+  plantilla no cambia lo que se ve.
 -->
 
 <!-- Encabezado (componente Header) -->
@@ -15,3 +15,6 @@
 
 <!-- Pie de página (componente Footer) -->
 <app-footer />
+
+<!-- Aviso flotante compartido por todas las vistas (componente Toast) -->
+<app-toast />
