@@ -20,7 +20,7 @@ const ARTICULO: Noticia = {
   categoria: 'tecnologia',
   categoriaLabel: 'Tecnología',
   imagen:
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuAtnBBD8sRC5tTJOce0TrCKZacmYGTV7ESkqaNoLvliETI_mQjgSi5nkBmlk3g7u5v0v-BvTebWTmkyOl7Diu7uSC37wW5kHQYKvyXkGmtHee3q1M8IH_wd-AKq6Y_JAIvKArNq0U1uH4AU2mvT1lVpB24LaStZ8RU6MobZJX8IY1eMh0CIrpLrsowLIiG3K55EFmrPr5kfdaXv_WLKMnGIYL_kVcAS4fmCx5simuUPWlcIl4YCKXMgEA',
+    'img/detalle-b0f34b41.jpg',
   tiempo: '24 de Octubre, 2025',
   lectura: '5 min',
   titulo: 'Modelos de Razonamiento Híbridos: La nueva frontera computacional que redefinirá la IA',
