@@ -1,0 +1,91 @@
+<!--
+  TechPulso - footer.html (componente Footer)
+  Politécnico Gran Colombiano - Módulo Front-End - Grupo B02 / Subgrupo 26
+
+  Pie de página compartido por las 5 vistas. En la Entrega 2 este bloque
+  estaba repetido en cada HTML; en Angular se escribe una sola vez aquí y
+  se usa con la etiqueta <app-footer />.
+
+  Notas:
+  - El correo se escribe con &#64; en lugar de la arroba, porque en las
+    plantillas de Angular la arroba se interpreta como el inicio de un
+    bloque de control y daría error de compilación.
+  - El logo se carga desde public/logo-techpulso.png. Antes apuntaba a un
+    enlace externo de Google que dejó de funcionar (error 403 Forbidden),
+    por eso se guardó el archivo dentro del proyecto. Se muestra a color,
+    igual que el logo de la Entrega 1.
+  - Los enlaces todavía apuntan a los archivos .html de la Entrega 2. Se
+    cambian por rutas de Angular (routerLink) cuando configuremos el router.
+-->
+
+<footer class="w-full bg-inverse-surface text-inverse-on-surface">
+<div class="max-w-[1320px] mx-auto px-margin lg:px-margin-lg pt-margin-lg pb-space-xl">
+
+<!-- Cuadrícula de 4 columnas (1 en celular, 2 en tablet, 4 en escritorio) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-lg">
+
+<!-- Columna 1: marca, descripción y redes sociales -->
+<div class="space-y-space-md">
+<div class="flex items-center gap-space-sm">
+<img alt="TechPulso Logo" class="h-7 w-auto object-contain" src="logo-techpulso.png"/>
+<span class="font-headline-sm text-headline-sm text-surface-container-lowest tracking-tight font-bold">TechPulso</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline-variant leading-relaxed">El pulso diario de la innovación tecnológica, inteligencia artificial y tendencias globales.</p>
+<!-- Íconos de redes sociales (por ahora sin destino, href="#") -->
+<div class="flex items-center gap-space-sm pt-space-xs">
+<a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">share</span></a>
+<a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">public</span></a>
+<a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">terminal</span></a>
+<a class="w-8 h-8 rounded-lg bg-surface-variant/10 flex items-center justify-center text-outline-variant hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">smart_display</span></a>
+</div>
+</div>
+
+<!-- Columna 2: enlaces rápidos a las vistas principales -->
+<div class="space-y-space-md">
+<h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Enlaces Rápidos</h4>
+<ul class="space-y-space-sm font-body-sm text-body-sm">
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="inicio" href="index.html">Inicio</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Catálogo de Noticias</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="favoritos" href="favoritos.html">Favoritos</a></li>
+</ul>
+</div>
+
+<!-- Columna 3: categorías (todas llevan al catálogo de noticias) -->
+<div class="space-y-space-md">
+<h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Categorías Populares</h4>
+<ul class="space-y-space-sm font-body-sm text-body-sm">
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Tecnología</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Educativas</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Turísticas</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Comerciales</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Ciberseguridad</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Inteligencia Artificial</a></li>
+</ul>
+</div>
+
+<!-- Columna 4: suscripción al newsletter y datos de contacto -->
+<div class="space-y-space-md">
+<h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Contacto y Newsletter</h4>
+<p class="font-body-sm text-body-sm text-outline-variant">Suscríbete al resumen tech semanal</p>
+<!-- Campo de correo y botón de enviar (todavía sin funcionalidad) -->
+<div class="flex items-center">
+<input class="w-full bg-surface-variant/10 border border-outline-variant/30 rounded-l-lg px-3 py-2 font-body-sm text-body-sm text-surface-container-lowest placeholder:text-outline focus:outline-none focus:border-secondary-container" placeholder="tu@email.com" type="email"/>
+<button class="bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container px-4 py-2 rounded-r-lg font-label-md text-label-md transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[18px]">send</span></button>
+</div>
+<!-- Correo y ubicación de TechPulso -->
+<div class="space-y-space-xs pt-space-xs font-body-sm text-body-sm text-outline-variant">
+<div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px]">mail</span><span>contacto&#64;techpulso.com</span></div>
+<div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px]">location_on</span><span>Bogotá, Colombia</span></div>
+</div>
+</div>
+
+</div>
+
+<!-- Franja inferior: derechos reservados y enlaces legales -->
+<div class="mt-margin-lg pt-space-md border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-between gap-space-md text-outline-variant font-caption text-caption">
+<p>© 2025 TechPulso Inc. Todos los derechos reservados.</p>
+<div class="flex items-center gap-gutter"><span>Privacidad</span><span>Términos del Servicio</span><span>Cookies</span></div>
+</div>
+
+</div>
+</footer>

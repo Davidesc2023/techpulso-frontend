@@ -1,0 +1,13 @@
+/*
+  TechPulso - Estilos globales (proyecto Angular)
+  Politécnico Gran Colombiano - Módulo Front-End - Grupo B02 / Subgrupo 26
+
+  Este archivo se aplica a toda la aplicación. Acá solo activamos Tailwind:
+  - @import "tailwindcss" carga las clases de utilidad de Tailwind
+    (las mismas que usábamos en la Entrega 2, ahora instaladas como
+    dependencia del proyecto y no desde el CDN).
+  - @config enlaza nuestro tailwind.config.js, que define los colores,
+    la tipografía y los espaciados propios de TechPulso.
+*/
+@import "tailwindcss";
+@config "../tailwind.config.js";
