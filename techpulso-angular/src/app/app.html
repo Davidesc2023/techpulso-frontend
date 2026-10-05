@@ -1,13 +1,17 @@
 <!--
   TechPulso - app.html (plantilla del componente raíz)
 
-  Por ahora solo muestra el footer y deja listo el espacio donde el router
-  dibujará cada vista. Al agregar el header y las vistas, se irán sumando
-  aquí.
+  Estructura de toda la aplicación, de arriba hacia abajo:
+  encabezado, contenido de la vista actual y pie de página.
+  El contenido lo dibuja el router en <router-outlet />; todavía no hay
+  vistas, por eso solo se ven el encabezado y el pie.
 -->
 
-<!-- Pie de página (componente Footer) -->
-<app-footer />
+<!-- Encabezado (componente Header) -->
+<app-header />
 
 <!-- Espacio donde el router mostrará la vista de la ruta actual -->
 <router-outlet />
+
+<!-- Pie de página (componente Footer) -->
+<app-footer />

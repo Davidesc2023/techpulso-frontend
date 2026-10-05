@@ -1,0 +1,72 @@
+<!--
+  TechPulso - header.html (componente Header)
+  Politécnico Gran Colombiano - Módulo Front-End - Grupo B02 / Subgrupo 26
+
+  Encabezado compartido por las 5 vistas. En la Entrega 2 este bloque
+  estaba repetido en cada HTML; en Angular se escribe una sola vez aquí y
+  se usa con la etiqueta <app-header />.
+
+  Notas:
+  - El logo se carga desde public/logo-techpulso.png. Antes apuntaba a un
+    enlace externo de Google que dejó de funcionar (error 403 Forbidden).
+  - El encabezado es fijo (position fixed) y mide 5rem de alto (h-20), por
+    eso cada vista necesita un espacio superior de esa altura (pt-20).
+  - Los enlaces todavía apuntan a los archivos .html de la Entrega 2. Se
+    cambian por rutas de Angular (routerLink) cuando configuremos el router.
+  - El ítem activo del menú (Inicio) está escrito a mano. Con el router se
+    marcará solo, según la vista que se esté mostrando.
+  - El número 3 junto al ícono de favoritos es fijo por ahora. Más adelante
+    mostrará la cantidad real de noticias guardadas.
+  - El buscador y el ícono de usuario son solo visuales, sin funcionalidad.
+-->
+
+<header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+<div class="h-20 max-w-[1320px] mx-auto px-margin lg:px-margin-lg flex items-center justify-between gap-space-md">
+
+<!-- Logo y nombre: enlace a la vista de inicio -->
+<div class="flex items-center gap-space-md">
+<a class="flex items-center gap-space-sm focus:outline-none" data-path="inicio" href="index.html">
+<img alt="TechPulso Logo" class="h-8 w-auto object-contain" src="logo-techpulso.png"/>
+<span class="font-headline-md text-headline-md text-primary tracking-tight font-bold">TechPulso</span>
+</a>
+</div>
+
+<!-- Menú de navegación (solo se ve en pantallas grandes). El ítem activo lleva el subrayado azul -->
+<nav class="hidden lg:flex items-center gap-gutter" data-active-classes="text-primary font-bold border-b-2 border-primary pb-1">
+<a aria-current="page" class="transition-colors text-primary font-bold border-b-2 border-primary pb-1" data-path="inicio" href="index.html">Inicio</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="noticias" href="noticias.html">Noticias</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="favoritos" href="favoritos.html">Favoritos</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="categorias" href="noticias.html">Categorías</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="contacto" href="contacto.html">Contacto</a>
+</nav>
+
+<!-- Zona derecha: buscador, favoritos, publicar noticia y usuario -->
+<div class="flex items-center gap-space-md">
+
+<!-- Buscador (solo se ve en pantallas muy grandes) -->
+<div class="relative hidden xl:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="bg-surface-container-lowest border border-outline-variant/50 rounded-full pl-9 pr-8 py-1.5 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary w-56 transition-all" placeholder="Buscar tecnología, temas..." type="text"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 font-caption text-caption text-outline">⌘K</span>
+</div>
+
+<!-- Acceso a favoritos con el contador de noticias guardadas -->
+<a class="relative flex items-center justify-center p-2 rounded-full hover:bg-surface-container hover:text-on-surface text-on-surface-variant transition-colors" data-path="favoritos" href="favoritos.html" title="Mis Favoritos">
+<span class="material-symbols-outlined text-[22px]">bookmark</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary font-label-sm text-label-sm w-5 h-5 rounded-full flex items-center justify-center ring-2 ring-surface-container-lowest font-bold">3</span>
+</a>
+
+<!-- Botón "Publicar Noticia": lleva al catálogo, donde está el formulario de creación (mini CRUD) -->
+<a class="inline-flex items-center gap-space-xs bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.35)] active:scale-95" data-path="publicar-noticia" href="noticias.html">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Publicar Noticia</span>
+</a>
+
+<!-- Ícono de usuario (solo visual) -->
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+</div>
+
+</div>
+</div>
+</header>
