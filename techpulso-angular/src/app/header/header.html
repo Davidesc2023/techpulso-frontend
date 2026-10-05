@@ -7,14 +7,18 @@
   se usa con la etiqueta <app-header />.
 
   Notas:
+  - Los enlaces usan routerLink: navegan entre vistas sin recargar la
+    página. Las direcciones están definidas en app.routes.ts.
+  - El menú se dibuja con un bloque for que recorre la lista "enlaces" de
+    header.ts. El enlace de la vista abierta se marca con el subrayado
+    azul gracias a routerLinkActive, que avisa cuándo está activo.
+  - "Categorías" lleva al catálogo, igual que "Noticias", pero nunca se
+    marca como activo para que no se subrayen dos enlaces a la vez.
+  - En la vista de Detalle no se subraya ningún ítem del menú.
   - El logo se carga desde public/logo-techpulso.png. Antes apuntaba a un
     enlace externo de Google que dejó de funcionar (error 403 Forbidden).
   - El encabezado es fijo (position fixed) y mide 5rem de alto (h-20), por
     eso cada vista necesita un espacio superior de esa altura (pt-20).
-  - Los enlaces todavía apuntan a los archivos .html de la Entrega 2. Se
-    cambian por rutas de Angular (routerLink) cuando configuremos el router.
-  - El ítem activo del menú (Inicio) está escrito a mano. Con el router se
-    marcará solo, según la vista que se esté mostrando.
   - El número 3 junto al ícono de favoritos es fijo por ahora. Más adelante
     mostrará la cantidad real de noticias guardadas.
   - El buscador y el ícono de usuario son solo visuales, sin funcionalidad.
@@ -25,19 +29,29 @@
 
 <!-- Logo y nombre: enlace a la vista de inicio -->
 <div class="flex items-center gap-space-md">
-<a class="flex items-center gap-space-sm focus:outline-none" data-path="inicio" href="index.html">
+<a class="flex items-center gap-space-sm focus:outline-none" data-path="inicio" routerLink="/">
 <img alt="TechPulso Logo" class="h-8 w-auto object-contain" src="logo-techpulso.png"/>
 <span class="font-headline-md text-headline-md text-primary tracking-tight font-bold">TechPulso</span>
 </a>
 </div>
 
-<!-- Menú de navegación (solo se ve en pantallas grandes). El ítem activo lleva el subrayado azul -->
+<!-- Menú de navegación (solo se ve en pantallas grandes). Un enlace por cada elemento de la lista "enlaces" de header.ts -->
 <nav class="hidden lg:flex items-center gap-gutter" data-active-classes="text-primary font-bold border-b-2 border-primary pb-1">
-<a aria-current="page" class="transition-colors text-primary font-bold border-b-2 border-primary pb-1" data-path="inicio" href="index.html">Inicio</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="noticias" href="noticias.html">Noticias</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="favoritos" href="favoritos.html">Favoritos</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="categorias" href="noticias.html">Categorías</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="contacto" href="contacto.html">Contacto</a>
+@for (enlace of enlaces; track enlace.texto) {
+<!--
+  [routerLink]: dirección a la que lleva el enlace.
+  routerLinkActive y #activo: permiten saber si este enlace corresponde a la vista abierta (activo.isActive).
+  [class]: si está activo usa el estilo subrayado azul, si no el estilo normal.
+-->
+<a
+[routerLink]="enlace.ruta"
+routerLinkActive
+#activo="routerLinkActive"
+[routerLinkActiveOptions]="{ exact: enlace.exacta }"
+[class]="enlace.marcable && activo.isActive ? claseActivo : claseInactivo"
+[attr.aria-current]="enlace.marcable && activo.isActive ? 'page' : null"
+>{{ enlace.texto }}</a>
+}
 </nav>
 
 <!-- Zona derecha: buscador, favoritos, publicar noticia y usuario -->
@@ -51,13 +65,13 @@
 </div>
 
 <!-- Acceso a favoritos con el contador de noticias guardadas -->
-<a class="relative flex items-center justify-center p-2 rounded-full hover:bg-surface-container hover:text-on-surface text-on-surface-variant transition-colors" data-path="favoritos" href="favoritos.html" title="Mis Favoritos">
+<a class="relative flex items-center justify-center p-2 rounded-full hover:bg-surface-container hover:text-on-surface text-on-surface-variant transition-colors" data-path="favoritos" routerLink="/favoritos" title="Mis Favoritos">
 <span class="material-symbols-outlined text-[22px]">bookmark</span>
 <span class="absolute -top-1 -right-1 bg-primary text-on-primary font-label-sm text-label-sm w-5 h-5 rounded-full flex items-center justify-center ring-2 ring-surface-container-lowest font-bold">3</span>
 </a>
 
 <!-- Botón "Publicar Noticia": lleva al catálogo, donde está el formulario de creación (mini CRUD) -->
-<a class="inline-flex items-center gap-space-xs bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.35)] active:scale-95" data-path="publicar-noticia" href="noticias.html">
+<a class="inline-flex items-center gap-space-xs bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.35)] active:scale-95" data-path="publicar-noticia" routerLink="/noticias">
 <span class="material-symbols-outlined text-[20px]">add</span>
 <span>Publicar Noticia</span>
 </a>

@@ -6,10 +6,12 @@
   solo muestra el HTML de footer.html, por eso la clase está vacía.
 */
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  // Este componente no usa otros componentes dentro de su plantilla.
-  imports: [],
+  // Herramienta de Angular que usa la plantilla footer.html:
+  // - RouterLink: hace que los enlaces naveguen entre vistas sin recargar.
+  imports: [RouterLink],
   // Etiqueta con la que se usa en otras plantillas: <app-footer />
   selector: 'app-footer',
   // Estilos propios del componente (los estilos visuales vienen de Tailwind).

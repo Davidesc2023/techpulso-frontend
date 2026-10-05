@@ -14,8 +14,8 @@
     enlace externo de Google que dejó de funcionar (error 403 Forbidden),
     por eso se guardó el archivo dentro del proyecto. Se muestra a color,
     igual que el logo de la Entrega 1.
-  - Los enlaces todavía apuntan a los archivos .html de la Entrega 2. Se
-    cambian por rutas de Angular (routerLink) cuando configuremos el router.
+  - Los enlaces usan routerLink: navegan entre vistas sin recargar la
+    página. Las direcciones están definidas en app.routes.ts.
 -->
 
 <footer class="w-full bg-inverse-surface text-inverse-on-surface">
@@ -44,9 +44,9 @@
 <div class="space-y-space-md">
 <h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Enlaces Rápidos</h4>
 <ul class="space-y-space-sm font-body-sm text-body-sm">
-<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="inicio" href="index.html">Inicio</a></li>
-<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Catálogo de Noticias</a></li>
-<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="favoritos" href="favoritos.html">Favoritos</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="inicio" routerLink="/">Inicio</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" routerLink="/noticias">Catálogo de Noticias</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="favoritos" routerLink="/favoritos">Favoritos</a></li>
 </ul>
 </div>
 
@@ -54,12 +54,12 @@
 <div class="space-y-space-md">
 <h4 class="font-headline-sm text-headline-sm text-surface-container-lowest font-semibold">Categorías Populares</h4>
 <ul class="space-y-space-sm font-body-sm text-body-sm">
-<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Tecnología</a></li>
-<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Educativas</a></li>
-<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Turísticas</a></li>
-<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Comerciales</a></li>
-<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Ciberseguridad</a></li>
-<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" href="noticias.html">Inteligencia Artificial</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" routerLink="/noticias">Tecnología</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" routerLink="/noticias">Educativas</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" routerLink="/noticias">Turísticas</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" routerLink="/noticias">Comerciales</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" routerLink="/noticias">Ciberseguridad</a></li>
+<li><a class="text-outline-variant hover:text-surface-container-lowest transition-colors" data-path="noticias" routerLink="/noticias">Inteligencia Artificial</a></li>
 </ul>
 </div>
 
